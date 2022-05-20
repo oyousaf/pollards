@@ -2,6 +2,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Gallery from "./components/Gallery";
 import Home from "./components/Home";
+import Info from "./components/Info";
 import Navbar from "./components/Navbar";
 import Team from "./components/Team";
 
@@ -13,6 +14,7 @@ function App() {
       <About />
       <Team />
       <Gallery />
+      <Info />
       <Contact />
     </div>
   );
