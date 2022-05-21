@@ -17,7 +17,7 @@ const Team = () => {
           </p>
         </div>
 
-        <div className="w-full grid grid-cols-3 sm:grid-cols-3 gap-4 text-center py-8">
+        <div className="w-full grid grid-cols-3 gap-4 text-center py-8">
           <div className="shadow-md shadow-[#265B5F] hover:scale-110 duration-500">
             <img className="mx-auto" src={Denise} alt="Denise" />
             <p className="my-4">Denise</p>
