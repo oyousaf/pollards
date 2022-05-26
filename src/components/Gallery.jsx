@@ -1,136 +1,46 @@
-import React from 'react'
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
-
-import { images } from '../constants/'
-
+import React from "react";
+import { data } from "../constants/images";
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 
 const Gallery = () => {
-    const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay(true)])
-    
+
+  const slideLeft = () => {
+    var slider = document.getElementById('slider')
+    slider.scrollLeft = slider.scrollLeft - 500
+  }
+
+  const slideRight = () => {
+    var slider = document.getElementById('slider')
+    slider.scrollLeft = slider.scrollLeft + 500
+  }
+
   return (
     <div name="gallery" className="w-full h-screen bg-[#9f34b5] text-gray-300">
-        <div className="max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full">
-            <div className="pb-8">
-            <p className="text-4xl font-bold inline border-b-4 border-gray-400">
-                Gallery
-            </p>
-            <p className="py-6">Collage of memories</p>
-            </div>
-
-            {/* Embla Carousel */}
-            <div className="embla" ref={emblaRef}>
-                <div className="embla__container">
-                <div className="embla__slide">
-                    <img src={ images.img4 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img5 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img6 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img7 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img8 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img9 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img10 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img11 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img12 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img13 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img14 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img15 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img16 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img17 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img18 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img19 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img20 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img21 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img22 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img23 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img24 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img25 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img26 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img27 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img28 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img29 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img30 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img31 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img32 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img33 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img34 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img35 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img36 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img37 } alt='pollards'/>
-                </div>
-                <div className="embla__slide">
-                    <img src={ images.img38 } alt='pollards'/>
-                </div>
-                </div>
-            </div>     
+      <div className="max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full">
+        <div className="pb-8">
+          <p className="text-4xl font-bold inline border-b-4 border-gray-400">
+            Gallery
+          </p>
+          <p className="py-6">Collage of memories</p>
         </div>
-    </div>
-  )
-}
 
-export default Gallery
+        <div className="relative flex items-center">
+          <MdChevronLeft className="opacity-50 cursor-pointer hover:opacity-100" onClick={slideLeft} size={40}/>
+            <div id="slider" className="w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
+            {data.map((item) => (
+                <img 
+                className="w-[300px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300"
+                src={item.img}
+                alt='gallery' 
+                />
+            ))}
+            </div>  
+          <MdChevronRight className="opacity-50 cursor-pointer hover:opacity-100" onClick={slideRight} size={40} />
+        </div>     
+        
+      </div>
+    </div>
+  );
+};
+
+export default Gallery;

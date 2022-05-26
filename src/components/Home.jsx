@@ -1,7 +1,7 @@
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { Link } from "react-scroll";
 
-import  pollard  from '../assets/images/mr pollard.jpg'
+import pollard from '../assets/images/mr pollard.jpg'
  
 const Home = () => {
   return (
