@@ -12,7 +12,7 @@ const Info = () => {
             </p>
             <p className="py-6">Common eye conditions</p>
             </div>
-            <div className="area w-full justify-center items-center grid grid-cols-3 gap-8">
+            <div className="area w-full justify-center items-center grid md:grid-cols-3 gap-8">
               <Tippy content={<span>(AMD) is a form of macular dystrophy. The macular, which is part of the retina at the back of the 
                 eye, contains millions of cone cells. These cone cells allow you to see fine detail for things like reading, writing and recognising colours.
                 When someone develops AMD, the cone cells become damaged and stop working as they should.</span>}>
