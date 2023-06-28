@@ -37,7 +37,7 @@ const Footer = () => (
         </div>
         <div className="w-full flex flex-col justify-between items-center pt-6">
           <p className="font-medium flex-row text-[18px] leading-[27px] text-white pt-6">
-            &copy;  {new Date().getFullYear()} Pollards Opticians
+            &copy; {new Date().getFullYear()} Pollards Opticians
           </p>
         </div>
       </div>

@@ -3,7 +3,6 @@ import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
 
 const Navbar = () => {
-  const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
 
   return (
@@ -40,6 +39,7 @@ const Navbar = () => {
           <ul className="list-none flex flex-col justify-end items-center flex-1">
             {navLinks.map((nav, index) => (
               <li
+                onClick={() => setToggle((prev) => !prev)}
                 key={nav.id}
                 className={`font-poppins font-bold cursor-pointer text-[25px] text-primary hover:text-white ${
                   index === navLinks.length - 1 ? "mr-0" : "mb-4"
