@@ -8,12 +8,12 @@ const Footer = () => (
     className={`${styles.flexCenter} ${styles.paddingY} flex-col font-poppins border-t-[1px] border-t-[#c3b1e1]`}
   >
     <div className={`${styles.flexStart} mb-8 w-full`}>
-      <div className="flex-1 flex flex-col justify-center items-center mr-10">
+      <div className="flex-1 flex flex-col justify-center items-center">
         <a href="https://pollards.info">
           <img
             src={logo}
             alt="pollards"
-            className="w-[100px] h-[100px] object-contain"
+            className="w-[50px] h-[50px] object-contain"
           />
         </a>
         <p className={`${styles.paragraph} mt-4 max-w-[310px]`}>
