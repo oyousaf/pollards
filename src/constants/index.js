@@ -202,7 +202,7 @@ export const socialMedia = [
 export const clients = [
   {
     id: "client-1",
-    logo: rayban,
+    logo: oakley,
   },
   {
     id: "client-2",
@@ -210,7 +210,7 @@ export const clients = [
   },
   {
     id: "client-3",
-    logo: oakley,
+    logo: rayban,
   },
   {
     id: "client-4",
