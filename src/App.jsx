@@ -23,8 +23,8 @@ const App = () => (
         <Team />
         <Endorsements />
         <Info />
-        <CTA /> 
         <Clients />
+        <CTA /> 
         <Footer />
       </div>
     </div>
