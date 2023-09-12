@@ -55,7 +55,7 @@ export const features = [
     icon: eye,
     title: "Contact Lens Specialists",
     content:
-      "We are supply all types of contact lenses including disposable lenses, extended-wear lenses, hard lenses, and soft lenses",
+      "We supply all types of contact lenses including disposable lenses, extended-wear lenses, hard lenses, and soft lenses",
   },
   {
     id: "feature-3",
