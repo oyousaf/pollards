@@ -1,3 +1,3 @@
 ## Pollards Opticians
 
-developed using Next.js and Tailwind
+Developed using Next.js and Tailwind
