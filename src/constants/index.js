@@ -48,14 +48,14 @@ export const features = [
     id: "feature-1",
     icon: glasses,
     title: "Frames",
-    content: "We supply a range of glasses and frames to cater to all needs",
+    content: "Supplying a range of glasses and frames to cater to all needs",
   },
   {
     id: "feature-2",
     icon: eye,
-    title: "Contact Lenses",
+    title: "Contact Lens Specialists",
     content:
-      "We are contact lens specialists and supply both hard and soft lenses",
+      "We are supply all types of contact lenses including disposable lenses, extended-wear lenses, hard lenses, and soft lenses",
   },
   {
     id: "feature-3",
