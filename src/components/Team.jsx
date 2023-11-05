@@ -14,7 +14,7 @@ const Team = () => (
       </p>
     </div>
     <div className={layout.sectionImg}>
-      <img src={card} alt="card" className="w-[100%] h-[100%]"/>
+      <img src={card} alt="card" className="w-full h-full" />
     </div>
   </section>
 );

@@ -1,3 +1,6 @@
+import React from "react";
+import dotenv from "dotenv";
+
 import styles from "../style";
 import { logo } from "../assets";
 import { socialMedia } from "../constants";
@@ -22,7 +25,7 @@ const Footer = () => (
         <div className="w-full flex flex-col justify-between items-center pt-6">
           <p className="flex flex-row">
             {socialMedia.map((social, index) => (
-              <a href={social.link} target={social.target}>
+              <a key={social.id} href={social.link} target={social.target}>
                 <img
                   key={social.id}
                   src={social.icon}

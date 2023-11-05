@@ -55,7 +55,7 @@ export const features = [
     icon: eye,
     title: "Contact Lens Specialists",
     content:
-      "We supply all types of contact lenses including disposable lenses, extended-wear lenses, hard lenses, and soft lenses",
+      "We supply all types of contact lenses including disposable, extended-wear, hard, and soft lenses",
   },
   {
     id: "feature-3",
@@ -68,28 +68,25 @@ export const features = [
 export const feedback = [
   {
     id: "feedback-1",
-    content: `OMG.....where do I begin? I had an eye test for the first time at Pollards. I thought my eyesight had changed but wasn't sure due to having dry eyes caused by medication. 
-    What an amazing excellent optometrist Fizz is! He's absolutely brilliant; - very thorough and reassuring. Not only had my eyesight changed but he had also noticed an ingrowing eyelash which he 
-    removed, painlessly. Also informed me I had cataract and has referred me to have it removed. Fantastic service from friendly staff; my forever Opticians, brilliant service can't recommend 
-    them enough! Thank you so much.`,
-    name: "Pauline Northern",
-    title: "Brilliant Opticians",
+    content: `Always receive fantastic support and service from Fizz. As someone who suffers from keratoconus, Fizz has been helping me for years to get my vision to a great standard. Always on hand with 
+    any issues and readily available with great advice, Fizz has restored my vision!.`,
+    name: "Aamir Akudi",
+    title: "Fantastic Support",
     img: people01,
   },
   {
     id: "feedback-2",
-    content: `Absolutely adore all the staff at this opticians. Fizz helped me when I was lost with what to do next. My Keratoconus had gotten so bad in my right eye, it had me more than extremely worried. 
-      3 months later fitted with a new contact lens, passed my driving medical with flying colours. Why would I go anywhere else now? That's right - I wouldn't`,
-    name: "Aaron Eccles",
-    title: "Founder & Leader",
+    content: `Absolutely fantastic, my son has nystagmus as well as an eye drift, all of the team at Pollards were absolutely brilliant with him from his eye test with Matthew, his review with Fizz, his 
+    glasses choice with Denise, and his glasses fitting with Emma, nothing was too much trouble - we will be back!! Thank you for everything you did to help x`,
+    name: "Sara O'Hara",
+    title: "Absolutely brilliant",
     img: people02,
   },
   {
     id: "feedback-3",
-    content: `Came here for an eye test, I chose the gold package which checks behind your eye as well. The appointment was very informative and I learned some new things about the eyes in general. I luckily
-       didn't need glasses but was advised some eye drops for my dry eye which work wonders. Felt super comfortable in the appointment; friendly but professional optician.`,
-    name: "iamfrankymusic",
-    title: "Founder & Leader",
+    content: `Fantastic professional service. The team really put you at ease here. After only two visits I now have vision in my left eye after 8 years of blurred vision.`,
+    name: "Mick Cleeve",
+    title: "Professional service",
     img: people03,
   },
 ];
