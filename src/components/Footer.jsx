@@ -1,15 +1,18 @@
 import React from "react";
-import dotenv from "dotenv";
 
 import styles from "../style";
 import { logo } from "../assets";
 import { socialMedia } from "../constants";
+
+import Gmap from "./Gmap";
 
 const Footer = () => (
   <section
     id="contact"
     className={`${styles.flexCenter} ${styles.paddingY} flex-col font-poppins border-t-[1px] border-t-[#c3b1e1]`}
   >
+    <Gmap />
+
     <div className={`${styles.flexStart} mb-8 w-full`}>
       <div className="flex-1 flex flex-col justify-center items-center">
         <a href="https://pollards.info">
