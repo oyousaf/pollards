@@ -33,7 +33,7 @@ const Footer = () => (
                   key={social.id}
                   src={social.icon}
                   alt={social.id}
-                  className={`w-[21px] h-[21px] object-contain cursor-pointer ${
+                  className={`text-4xl w-[21px] h-[21px] object-contain cursor-pointer ${
                     index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
                   }`}
                 />
@@ -42,7 +42,7 @@ const Footer = () => (
           </p>
         </div>
         <div className="w-full flex flex-col justify-between items-center pt-6">
-          <p className="font-medium flex-row text-[18px] leading-[27px] text-white pt-6">
+          <p className="font-medium flex-row text-[20px] leading-[27px] text-white pt-6">
             &copy; {new Date().getFullYear()} Pollards Opticians
           </p>
         </div>
