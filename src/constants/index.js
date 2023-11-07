@@ -69,25 +69,25 @@ export const feedback = [
   {
     id: "feedback-1",
     content: `Always receive fantastic support and service from Fizz. As someone who suffers from keratoconus, Fizz has been helping me for years to get my vision to a great standard. Always on hand with 
-    any issues and readily available with great advice, Fizz has restored my vision!.`,
+    any issues and readily available with great advice, Fizz has restored my vision!`,
     name: "Aamir Akudi",
     title: "Fantastic Support",
     img: people01,
   },
   {
     id: "feedback-2",
+    content: `Fantastic professional service. The team really put you at ease here. After only two visits I now have vision in my left eye after 8 years of blurred vision.`,
+    name: "Mick Cleeve",
+    title: "Professional service",
+    img: people03,
+  },
+  {
+    id: "feedback-3",
     content: `Absolutely fantastic, my son has nystagmus as well as an eye drift, all of the team at Pollards were absolutely brilliant with him from his eye test with Matthew, his review with Fizz, his 
     glasses choice with Denise, and his glasses fitting with Emma, nothing was too much trouble - we will be back!! Thank you for everything you did to help x`,
     name: "Sara O'Hara",
     title: "Absolutely brilliant",
     img: people02,
-  },
-  {
-    id: "feedback-3",
-    content: `Fantastic professional service. The team really put you at ease here. After only two visits I now have vision in my left eye after 8 years of blurred vision.`,
-    name: "Mick Cleeve",
-    title: "Professional service",
-    img: people03,
   },
 ];
 
