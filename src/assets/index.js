@@ -6,17 +6,20 @@ import logo from "./logo.svg";
 import quotes from "./quotes.svg";
 import send from "./Send.svg";
 import eye from "./eye.svg";
-import glasses from "./glasses.svg"
+import glasses from "./glasses.svg";
 import test from "./test.svg";
 import menu from "./menu.svg";
 import close from "./close.svg";
 import arrowUp from "./arrow-up.svg";
 import discount from "./Discount.svg";
-import mrpollard from "./mrpollard.jpg";
+import facebook from "./facebook.png";
+import linkedin from "./linkedin.png";
+import twitter from "./twitter.png";
+import mrpollard from "./mrpollard.png";
 import emma from "./emma.png";
 import denise from "./denise.png";
 import fizz from "./fizz.png";
-import michael from "./michael.png"
+import michael from "./michael.png";
 
 export {
   rayban,
@@ -33,6 +36,9 @@ export {
   close,
   arrowUp,
   discount,
+  facebook,
+  linkedin,
+  twitter,
   mrpollard,
   emma,
   denise,
