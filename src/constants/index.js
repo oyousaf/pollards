@@ -1,8 +1,11 @@
 import {
-  denise,
   emma,
+  denise,
   fizz,
   michael,
+  facebook,
+  linkedin,
+  twitter,
   rayban,
   oakley,
   porsche,
@@ -143,5 +146,24 @@ export const clients = [
   {
     id: "client-4",
     logo: tomford,
+  },
+];
+
+export const team = [
+  {
+    id: "Emma",
+    image: emma,
+  },
+  {
+    id: "Denise",
+    image: denise,
+  },
+  {
+    id: "Fizz",
+    image: fizz,
+  },
+  {
+    id: "Michael",
+    image: michael,
   },
 ];
