@@ -35,7 +35,7 @@ const Bubbles = () => {
               alt="Bubble"
               className="w-12 h-12 rounded-full"
             />
-            <p className="text-white">{member.name}</p>
+            <p className="text-pink-300">{member.name}</p>
           </div>
         </animated.div>
       ))}
