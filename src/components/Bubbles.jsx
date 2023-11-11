@@ -18,8 +18,10 @@ const Bubbles = () => {
   });
 
   React.useEffect(() => {
-    return stop;
-  }, [stop]);
+    return () => {
+      stopRef.current();
+    };
+  }, []);
 
   return (
     <div>
