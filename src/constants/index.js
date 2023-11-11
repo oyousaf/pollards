@@ -148,18 +148,22 @@ export const clients = [
 
 export const team = [
   {
+    id: 1,
     name: "Emma",
     image: emma,
   },
   {
+    id: 2,
     name: "Denise",
     image: denise,
   },
   {
+    if: 3,
     name: "Fizz",
     image: fizz,
   },
   {
+    id: 4,
     name: "Michael",
     image: michael,
   },
