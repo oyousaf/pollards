@@ -5,25 +5,28 @@ import "./Bubbles.css";
 
 const Bubbles = () => {
   return (
-    <div className="relative w-full h-[300px] overflow-hidden">
-      <div className="flex justify-center items-center space-x-2">
-        {team.map((member) => (
+    <div className="relative w-full h-[300px]">
+      <div className="flex justify-center items-end space-x-2">
+        {team.map((member, index) => (
           <div
-            key={member.id}
-            className="flex items-center space-x-2"
+            key={index}
+            className="flex items-end space-x-2"
             style={{
               animation: "floatAnimation 3s ease-in-out infinite",
+              animationDelay: `${index * 0.2}s`,
             }}
           >
             <img
               src={member.image}
               alt={member.name}
-              className="w-16 h-16 rounded-full"
+              className="w-30 h-30 rounded-full"
               style={{
                 animation: `rotateAnimation 3s ease-in-out infinite, scaleAnimation 3s ease-in-out infinite, floatAnimation 3s ease-in-out infinite`,
               }}
             />
-            <p className="text-pink-300 text-2xl">{member.name}</p>
+            <p className="text-pink-300 text-2xl justify-end items-end">
+              {member.name}
+            </p>
           </div>
         ))}
       </div>
