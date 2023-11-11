@@ -2,12 +2,7 @@ import React from "react";
 import { useSpring, animated } from "react-spring";
 import { useHover } from "react-use-gesture";
 
-const bubbleData = [
-  { image: "url_to_image_1", text: "Emma" },
-  { image: "url_to_image_2", text: "Denise" },
-  { image: "url_to_image_3", text: "Fizz" },
-  { image: "url_to_image_4", text: "Michael" },
-];
+import { team } from "../constants";
 
 const Bubbles = () => {
   const [springProps, set] = useSpring(() => ({
@@ -29,11 +24,11 @@ const Bubbles = () => {
     >
       <div className="p-4 bg-black bg-opacity-80 rounded-md">
         <img
-          src={bubbleData[0].image}
+          src={team[0].image}
           alt="Bubble"
           className="w-12 h-12 rounded-full"
         />
-        <p className="text-white">{bubbleData[0].text}</p>
+        <p className="text-white">{team[0].name}</p>
       </div>
     </div>
   );
