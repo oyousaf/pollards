@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../style";
-import { discount, robot } from "../assets";
+import { discount, mrpollard } from "../assets";
 import Explore from "./Explore";
 
 const Hero = () => (
@@ -32,7 +32,7 @@ const Hero = () => (
 
     <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
       <img
-        src={robot}
+        src={mrpollard}
         alt="pollard"
         className="w-[300px] md:w-[400px] h-[100%] z-[5] relative rounded-xl"
       />
