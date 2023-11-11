@@ -1,4 +1,3 @@
-import { card } from "../assets";
 import styles, { layout } from "../style";
 
 import Bubbles from "./Bubbles";
@@ -17,7 +16,6 @@ const Team = () => (
     </div>
     <div className={layout.sectionImg}>
       <Bubbles />
-      <img src={card} alt="card" className="w-full h-full" />
     </div>
   </section>
 );

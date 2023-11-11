@@ -72,14 +72,12 @@ export const feedback = [
     any issues and readily available with great advice, Fizz has restored my vision!`,
     name: "Aamir Akudi",
     title: "Fantastic Support",
-    img: people01,
   },
   {
     id: "feedback-2",
     content: `Fantastic professional service. The team really put you at ease here. After only two visits I now have vision in my left eye after 8 years of blurred vision.`,
     name: "Mick Cleeve",
     title: "Professional service",
-    img: people03,
   },
   {
     id: "feedback-3",
@@ -87,7 +85,6 @@ export const feedback = [
     glasses choice with Denise, and his glasses fitting with Emma, nothing was too much trouble - we will be back!! Thank you for everything you did to help x`,
     name: "Sara O'Hara",
     title: "Absolutely brilliant",
-    img: people02,
   },
 ];
 
