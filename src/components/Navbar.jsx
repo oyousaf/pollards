@@ -73,7 +73,7 @@ const Navbar = () => {
             className="text-2xl text-primary"
             onClick={() => setToggle(false)}
           >
-            <img src={close} className="absolute right-5" alt="Close" />
+            <img src={close} className="absolute right-5" alt="close" />
           </button>
           <ul className="list-none flex flex-col items-center mt-8">
             {navLinks.map((nav) => (
