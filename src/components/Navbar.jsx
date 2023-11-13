@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { close, logo, menu } from "../assets";
-import { navLinks } from "../constants";
+import { navLinks, socialMedia } from "../constants";
 
 const NavItem = ({ href, title, lastItem }) => (
   <li
@@ -56,7 +56,7 @@ const Navbar = () => {
 
       {/* Mobile menu button */}
       <button
-        className="sm:hidden ml-auto p-2 focus:outline-none"
+        className="sm:hidden ml-auto p-2 focus:outline-none font-bold"
         onClick={handleToggle}
       >
         <img
@@ -77,14 +77,38 @@ const Navbar = () => {
           </button>
           <ul className="list-none flex flex-col items-center mt-8">
             {navLinks.map((nav) => (
-              <NavItem
+              <li
                 key={nav.id}
-                href={`#${nav.id}`}
-                title={nav.title}
-                lastItem={false}
-              />
+                className="font-poppins font-bold cursor-pointer text-[25px] text-primary hover:text-gray-100 mb-4"
+              >
+                <a
+                  href={`#${nav.id}`}
+                  onClick={() => {
+                    setToggle(false);
+                  }}
+                >
+                  {nav.title}
+                </a>
+              </li>
             ))}
           </ul>
+
+          <div className="w-full flex flex-col justify-between items-center pt-6">
+            <p className="flex flex-row bottom-0">
+              {socialMedia.map((social, index) => (
+                <a key={social.id} href={social.link} target={social.target}>
+                  <img
+                    key={social.id}
+                    src={social.icon}
+                    alt={social.id}
+                    className={`w-[30px] h-[30px] object-contain cursor-pointer ${
+                      index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
+                    }`}
+                  />
+                </a>
+              ))}
+            </p>
+          </div>
         </div>
       )}
     </nav>
