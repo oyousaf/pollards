@@ -2,38 +2,18 @@ import React, { useState, useEffect } from "react";
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
 
+// Helper components
 const NavItem = ({ href, title, lastItem }) => (
   <li
     className={`font-poppins font-medium cursor-pointer text-[20px] ${
-      lastItem ? "mb-0" : "mb-4"
-    } text-primary hover:text-white`}
+      lastItem ? "mr-0" : "mr-10"
+    } text-gray-300 hover:text-white`}
   >
     <a href={href}>{title}</a>
   </li>
 );
 
-const MobileMenu = ({ navLinks, onClose }) => (
-  <div className="fixed inset-0 bg-[#C3B1E1] z-[1000] flex items-center justify-center">
-    <div className="absolute top-0 right-0 p-4">
-      <button className="w-[28px] h-[28px] text-white" onClick={onClose}>
-        <img src={close} alt="close" className="w-full h-full" />
-      </button>
-    </div>
-    <div className="sticky top-1/2 transform -translate-y-1/2 p-4 text-center">
-      <ul className="list-none flex flex-col items-center space-y-4">
-        {navLinks.map((nav, index) => (
-          <NavItem
-            key={nav.id}
-            href={`#${nav.id}`}
-            title={nav.title}
-            lastItem={index === navLinks.length - 1}
-          />
-        ))}
-      </ul>
-    </div>
-  </div>
-);
-
+// Main component
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -64,6 +44,7 @@ const Navbar = () => {
         <img src={logo} alt="pollards" className="w-[50px] h-[50px]" />
       </a>
 
+      {/* Desktop navigation */}
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
           <NavItem
@@ -75,6 +56,7 @@ const Navbar = () => {
         ))}
       </ul>
 
+      {/* Mobile menu button */}
       <button
         className="sm:hidden ml-auto p-2 focus:outline-none"
         onClick={handleToggle}
@@ -86,8 +68,27 @@ const Navbar = () => {
         />
       </button>
 
+      {/* Mobile menu content */}
       {toggle && (
-        <MobileMenu navLinks={navLinks} onClose={() => setToggle(false)} />
+        <div className="fixed inset-0 bg-[#C3B1E1] z-[1000] p-4 overflow-y-auto">
+          <div className="sticky top-0">
+            <button className="text-2xl text-primary" onClick={() => setToggle(false)}>
+              <img src={close} className="absolute right-5" alt="Close" />
+            </button>
+            <ul className="list-none flex flex-col items-center mt-8">
+              {navLinks.map((nav, index) => (
+                <li
+                  key={nav.id}
+                  className="font-poppins font-bold cursor-pointer text-[25px] text-primary hover:text-gray-100 mb-4"
+                >
+                  <a href={`#${nav.id}`} onClick={() => { setToggle(false); }}>
+                    {nav.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       )}
     </nav>
   );
