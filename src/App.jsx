@@ -5,7 +5,7 @@ import { Navbar, Hero, Stats, About, Info, Team, Endorsements, Gallery, CTA, Foo
 const App = () => (
   <div className="bg-primary w-full overflow-hidden">
     <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-      <div className={`${styles.boxWidth}`}>
+      <div className="relative">
         <Navbar />
       </div>
     </div>

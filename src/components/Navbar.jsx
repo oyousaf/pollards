@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
 
-// Helper components
 const NavItem = ({ href, title, lastItem }) => (
   <li
     className={`font-poppins font-medium cursor-pointer text-[20px] ${
@@ -13,7 +12,6 @@ const NavItem = ({ href, title, lastItem }) => (
   </li>
 );
 
-// Main component
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,10 +35,10 @@ const Navbar = () => {
   return (
     <nav
       className={`w-full flex py-6 justify-center items-center navbar ${
-        isScrolled ? "bg-white shadow-lg" : ""
+        isScrolled ? "bg-primary shadow-lg" : ""
       }`}
     >
-      <a href="https://pollards.info">
+      <a href="https://pollards.info" className="mr-[100px]">
         <img src={logo} alt="pollards" className="w-[50px] h-[50px]" />
       </a>
 
@@ -62,7 +60,7 @@ const Navbar = () => {
         onClick={handleToggle}
       >
         <img
-          src={toggle || isScrolled ? close : menu}
+          src={menu}
           alt="menu"
           className="w-[28px] h-[28px] object-contain"
         />
@@ -71,23 +69,22 @@ const Navbar = () => {
       {/* Mobile menu content */}
       {toggle && (
         <div className="fixed inset-0 bg-[#C3B1E1] z-[1000] p-4 overflow-y-auto">
-          <div className="sticky top-0">
-            <button className="text-2xl text-primary" onClick={() => setToggle(false)}>
-              <img src={close} className="absolute right-5" alt="Close" />
-            </button>
-            <ul className="list-none flex flex-col items-center mt-8">
-              {navLinks.map((nav, index) => (
-                <li
-                  key={nav.id}
-                  className="font-poppins font-bold cursor-pointer text-[25px] text-primary hover:text-gray-100 mb-4"
-                >
-                  <a href={`#${nav.id}`} onClick={() => { setToggle(false); }}>
-                    {nav.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <button
+            className="text-2xl text-primary"
+            onClick={() => setToggle(false)}
+          >
+            <img src={close} className="absolute right-5" alt="Close" />
+          </button>
+          <ul className="list-none flex flex-col items-center mt-8">
+            {navLinks.map((nav) => (
+              <NavItem
+                key={nav.id}
+                href={`#${nav.id}`}
+                title={nav.title}
+                lastItem={false}
+              />
+            ))}
+          </ul>
         </div>
       )}
     </nav>
