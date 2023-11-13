@@ -2,40 +2,38 @@ import React, { useState, useEffect } from "react";
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
 
-// Helper components
 const NavItem = ({ href, title, lastItem }) => (
   <li
     className={`font-poppins font-medium cursor-pointer text-[20px] ${
-      lastItem ? "mr-0" : "mr-10"
-    } text-gray-300 hover:text-white`}
+      lastItem ? "mb-0" : "mb-4"
+    } text-primary hover:text-white`}
   >
     <a href={href}>{title}</a>
   </li>
 );
 
 const MobileMenu = ({ navLinks, onClose }) => (
-  <div className="fixed inset-0 bg-primary z-[1000] p-4 overflow-y-auto">
-    <div className="sticky top-0">
-      <button className="text-2xl text-white" onClick={onClose}>
-        Close
+  <div className="fixed inset-0 bg-[#C3B1E1] z-[1000] flex items-center justify-center">
+    <div className="absolute top-0 right-0 p-4">
+      <button className="w-[28px] h-[28px] text-white" onClick={onClose}>
+        <img src={close} alt="close" className="w-full h-full" />
       </button>
-      <ul className="list-none flex flex-col items-center mt-8">
+    </div>
+    <div className="sticky top-1/2 transform -translate-y-1/2 p-4 text-center">
+      <ul className="list-none flex flex-col items-center space-y-4">
         {navLinks.map((nav, index) => (
-          <li
+          <NavItem
             key={nav.id}
-            className="font-poppins font-bold cursor-pointer text-[25px] text-white hover:text-gray-300 mb-4"
-          >
-            <a href={`#${nav.id}`} onClick={onClose}>
-              {nav.title}
-            </a>
-          </li>
+            href={`#${nav.id}`}
+            title={nav.title}
+            lastItem={index === navLinks.length - 1}
+          />
         ))}
       </ul>
     </div>
   </div>
 );
 
-// Main component
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
