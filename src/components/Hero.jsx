@@ -34,7 +34,7 @@ const Hero = () => (
       <img
         src={mrpollard}
         alt="pollard"
-        className="w-[300px] md:w-[400px] h-[100%] z-[5] relative rounded-xl"
+        className="w-[200px] md:w-[400px] h-[100%] z-[5] relative rounded-xl mr-3"
       />
       <div className={`ss:hidden ${styles.flexCenter}`}>
         <Explore />
