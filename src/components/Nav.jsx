@@ -1,10 +1,5 @@
-// Nav.js
 import React, { useState, useEffect } from "react";
-import {
-  NavLink as RouterNavLink,
-  useNavigate,
-  useLocation,
-} from "react-router-dom";
+import { NavLink as RouterNavLink, useLocation } from "react-router-dom";
 import NavLink from "./NavLink";
 import MobiLink from "./MobiLink";
 
