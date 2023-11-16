@@ -1,35 +1,37 @@
 import React from "react";
-import styles from "./style"
-import { Navbar, Hero, Stats, About, Info, Team, Endorsements, Gallery, CTA, Footer, Clients } from "./components";
+import styles from "./style";
+import { Nav, Hero, Stats, About, Info, Team, Endorsements, Gallery, CTA, Footer, Clients } from "./components";
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const App = () => (
-  <div className="bg-primary w-full overflow-hidden">
-    <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-      <div className="relative">
-        <Navbar />
+  <Router>
+    <div className="bg-primary w-full overflow-hidden">
+      <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+        <div className={`${styles.boxWidth}`}>
+          <Nav />
+        </div>
+      </div>
+
+      <div className={`bg-primary ${styles.flexStart}`}>
+        <div className={`${styles.boxWidth}`}>
+          <Hero />
+        </div>
+      </div>
+
+      <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
+        <div className={`${styles.boxWidth}`}>
+          <Stats />
+          <About />
+          <Team />
+          <Endorsements />
+          <Info />
+          <Clients />
+          <CTA />
+          <Footer />
+        </div>
       </div>
     </div>
-
-    <div className={`bg-primary ${styles.flexStart}`}>
-      <div className={`${styles.boxWidth}`}>
-        <Hero />
-      </div>
-    </div>
-
-    <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
-      <div className={`${styles.boxWidth}`}>
-        <Stats />
-        <About />
-        <Team />
-        <Endorsements />
-        <Info />
-        <Clients />
-        <CTA /> 
-        <Footer />
-      </div>
-    </div>
-
-  </div>
+  </Router>
 );
 
 export default App;
