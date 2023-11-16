@@ -13,7 +13,6 @@ import { navLinks, socialMedia } from "../constants";
 
 const Nav = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const [scrolling, setScrolling] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -125,7 +124,10 @@ const Nav = () => {
                   <MobiLink
                     key={nav.id}
                     to={nav.to}
-                    onClick={() => scrollToSection(nav.to)}
+                    onClick={() => {
+                      scrollToSection(nav.to);
+                      setMobileMenuOpen(!mobileMenuOpen);
+                    }}
                   >
                     {nav.title}
                   </MobiLink>
