@@ -95,10 +95,7 @@ const Nav = () => {
 
         {/* Hamburger menu for mobile */}
         <div className="sm:hidden">
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-xl text-gray-700 focus:outline-none"
-          >
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             <img src={menu} alt="menu" className="w-[28px] h-[28px]" />
           </button>
           {mobileMenuOpen && (
