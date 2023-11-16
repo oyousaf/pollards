@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink as RouterNavLink, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import NavLink from "./NavLink";
 import MobiLink from "./MobiLink";
 
