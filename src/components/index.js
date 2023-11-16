@@ -1,5 +1,4 @@
 import Nav from "./Nav";
-import Navbar from "./Navbar";
 import Hero from "./Hero";
 import Explore from "./Explore";
 import Stats from "./Stats";
@@ -14,7 +13,6 @@ import Footer from "./Footer";
 
 export {
   Nav,
-  Navbar,
   Hero,
   Explore,
   Stats,
