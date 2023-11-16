@@ -114,7 +114,7 @@ const Nav = () => {
                 />
               </button>
 
-              <ul className="list-none flex flex-col items-center mt-8">
+              <ul className="list-none flex flex-col items-center pt-[200px]">
                 {navLinks.map((nav) => (
                   <MobiLink
                     key={nav.id}
@@ -129,7 +129,7 @@ const Nav = () => {
                 ))}
               </ul>
 
-              <div className="w-full flex flex-col justify-between items-center pt-6">
+              <div className="w-full flex flex-col justify-between items-center pt-[175px]">
                 <p className="flex flex-row bottom-0">
                   {socialMedia.map((social, index) => (
                     <a
