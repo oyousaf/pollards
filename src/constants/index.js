@@ -17,33 +17,33 @@ import {
 
 export const navLinks = [
   {
-    to: "/#home",
+    to: "/home",
     id: "home",
     title: "Home",
   },
   {
-    to: "/#about",
+    to: "/about",
     id: "about",
     title: "About",
   },
   {
-    to: "/#team",
+    to: "/team",
     id: "team",
     title: "Team",
   },
 
   {
-    to: "/#review",
+    to: "/review",
     id: "review",
     title: "Reviews",
   },
   {
-    to: "/#info",
+    to: "/info",
     id: "info",
     title: "Info",
   },
   {
-    to: "/#contact",
+    to: "/contact",
     id: "contact",
     title: "Contact",
   },
