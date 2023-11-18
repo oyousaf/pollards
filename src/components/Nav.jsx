@@ -56,6 +56,7 @@ const Nav = () => {
               onClick={() => {
                 scrollToSection(nav.to);
               }}
+              active={isActive(nav.to)}
             >
               {nav.title}
             </NavLink>
