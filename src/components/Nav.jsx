@@ -49,48 +49,17 @@ const Nav = () => {
         </div>
 
         <div className="hidden sm:flex items-center space-x-6">
-          <NavLink
-            to="/home"
-            onClick={() => scrollToSection("/home")}
-            active={isActive("/home")}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/about"
-            onClick={() => scrollToSection("/about")}
-            active={isActive("/about")}
-          >
-            About
-          </NavLink>
-          <NavLink
-            to="/team"
-            onClick={() => scrollToSection("/team")}
-            active={isActive("/team")}
-          >
-            Team
-          </NavLink>
-          <NavLink
-            to="/review"
-            onClick={() => scrollToSection("/review")}
-            active={isActive("/review")}
-          >
-            Review
-          </NavLink>
-          <NavLink
-            to="/info"
-            onClick={() => scrollToSection("/info")}
-            active={isActive("/info")}
-          >
-            Info
-          </NavLink>
-          <NavLink
-            to="/contact"
-            onClick={() => scrollToSection("/contact")}
-            active={isActive("/contact")}
-          >
-            Contact
-          </NavLink>
+          {navLinks.map((nav) => (
+            <NavLink
+              key={nav.id}
+              to={nav.to}
+              onClick={() => {
+                scrollToSection(nav.to);
+              }}
+            >
+              {nav.title}
+            </NavLink>
+          ))}
         </div>
 
         {/* Hamburger menu for mobile */}
