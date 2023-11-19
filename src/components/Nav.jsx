@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import NavLink from "./NavLink";
 import MobiLink from "./MobiLink";
 
@@ -7,7 +6,6 @@ import { logo, menu, close } from "../assets";
 import { navLinks, socialMedia } from "../constants";
 
 const Nav = () => {
-  const location = useLocation();
   const [scrolling, setScrolling] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
