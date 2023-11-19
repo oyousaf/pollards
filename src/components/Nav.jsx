@@ -26,8 +26,6 @@ const Nav = () => {
     };
   }, []);
 
-  const isActive = (route) => location.pathname === route;
-
   const scrollToSection = (id) => {
     const element = document.getElementById(id.substring(1));
     if (element) {
@@ -52,11 +50,10 @@ const Nav = () => {
           {navLinks.map((nav) => (
             <NavLink
               key={nav.id}
-              to={nav.to}
+              href={nav.to}
               onClick={() => {
                 scrollToSection(nav.to);
               }}
-              active={isActive(nav.to)}
             >
               {nav.title}
             </NavLink>
@@ -85,7 +82,7 @@ const Nav = () => {
                 {navLinks.map((nav) => (
                   <MobiLink
                     key={nav.id}
-                    to={nav.to}
+                    href={nav.to}
                     onClick={() => {
                       scrollToSection(nav.to);
                       setMobileMenuOpen(!mobileMenuOpen);
