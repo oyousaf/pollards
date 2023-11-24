@@ -116,7 +116,8 @@ export const socialMedia = [
   {
     id: "insta",
     icon: FaInstagram,
-    link: "https://instagram"
+    link: "https://instagram.com/pollards.opticians",
+    target: "_blank",
   },
   {
     id: "fb",
