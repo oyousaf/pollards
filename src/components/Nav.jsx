@@ -11,11 +11,7 @@ const Nav = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setScrolling(true);
-      } else {
-        setScrolling(false);
-      }
+      setScrolling(window.scrollY > 0);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -49,9 +45,7 @@ const Nav = () => {
             <NavLink
               key={nav.id}
               href={nav.to}
-              onClick={() => {
-                scrollToSection(nav.to);
-              }}
+              onClick={() => scrollToSection(nav.to)}
             >
               {nav.title}
             </NavLink>
@@ -95,12 +89,12 @@ const Nav = () => {
                 <p className="flex flex-row bottom-0">
                   {socialMedia.map((social, index) => (
                     <a
-                      className={`w-[30px] h-[30px] text-gray-100 hover:text-primary object-contain cursor-pointer ${
-                        index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
-                      }`}
                       key={social.id}
                       href={social.link}
                       target={social.target}
+                      className={`w-[30px] h-[30px] text-gray-100 hover:text-primary object-contain cursor-pointer ${
+                        index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
+                      }`}
                     >
                       {social.icon}
                     </a>

@@ -3,7 +3,6 @@ import React from "react";
 import styles from "../style";
 import { logo } from "../assets";
 import socialMedia from "./SocialMedia";
-
 import Gmap from "./Gmap";
 
 const Footer = () => (
@@ -28,21 +27,21 @@ const Footer = () => (
         <div className="w-full flex flex-col justify-between items-center pt-6">
           <p className="flex flex-row">
             {socialMedia.map((social, index) => (
-              <a key={social.id} href={social.link} target={social.target}>
-                <img
-                  key={social.id}
-                  src={social.icon}
-                  alt={social.id}
-                  className={`w-[30px] h-[30px] text-gray-100 hover:text-[#C3B1E1] object-contain cursor-pointer ${
-                    index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
-                  }`}
-                />
+              <a
+                key={social.id}
+                href={social.link}
+                target={social.target}
+                className={`text-gray-100 hover:text-[#C3B1E1] object-contain cursor-pointer ${
+                  index !== socialMedia.length - 1 ? "mr-6" : ""
+                }`}
+              >
+                {social.icon}
               </a>
             ))}
           </p>
         </div>
         <div className="w-full flex flex-col justify-between items-center pt-6">
-          <p className="font-medium flex-row text-[20px] leading-[27px] text-white pt-6">
+          <p className="font-medium text-[20px] leading-[27px] text-white pt-6">
             &copy; {new Date().getFullYear()} Pollards Opticians
           </p>
         </div>
