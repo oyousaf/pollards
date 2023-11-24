@@ -101,7 +101,7 @@ const Nav = () => {
                       key={social.id}
                       href={social.link}
                       target={social.target}
-                      className={`w-[30px] h-[30px] font-bold text-3xl text-gray-100 hover:text-primary object-contain cursor-pointer ${
+                      className={`w-[30px] h-[30px] text-3xl text-gray-100 hover:text-primary object-contain cursor-pointer ${
                         index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
                       }`}
                     >
