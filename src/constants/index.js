@@ -12,6 +12,9 @@ import {
   test,
 } from "../assets";
 
+import { FaFacebook, FaInstagram, FaLinkedIn } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
+
 export const navLinks = [
   {
     to: "#home",
