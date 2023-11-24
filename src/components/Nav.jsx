@@ -95,7 +95,7 @@ const Nav = () => {
                 <p className="flex flex-row bottom-0">
                   {socialMedia.map((social, index) => (
                     <a
-                      className={`w-[30px] h-[30px] object-contain cursor-pointer ${
+                      className={`w-[30px] h-[30px] text-gray-100 hover:text-primary object-contain cursor-pointer ${
                         index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
                       }`}
                       key={social.id}
