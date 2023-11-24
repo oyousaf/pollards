@@ -114,21 +114,26 @@ export const stats = [
 
 export const socialMedia = [
   {
-    id: "meta",
-    icon: facebook,
+    id: "insta",
+    icon: FaInstagram,
+    link: "https://instagram"
+  },
+  {
+    id: "fb",
+    icon: FaFacebook,
     link: "https://www.facebook.com/pollardsopticianswakefield/",
     target: "_blank",
   },
   {
     id: "linkedin",
-    icon: linkedin,
+    icon: FaLinkedIn,
     link: "https://uk.linkedin.com/in/pollards-opticians-66716ba7",
     target: "_blank",
   },
   {
     id: "x",
-    icon: x,
-    link: "https://twitter.com/pollardsopti",
+    icon: BsTwitterX,
+    link: "https://x.com/pollardsopti",
     target: "_blank",
   },
 ];
