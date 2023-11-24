@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "../style";
 import { logo } from "../assets";
-import { socialMedia } from "./SocialMedia";
+import socialMedia from "./SocialMedia";
 
 import Gmap from "./Gmap";
 
