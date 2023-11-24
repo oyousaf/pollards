@@ -5,7 +5,7 @@ import {
   michael,
   facebook,
   linkedin,
-  twitter,
+  x,
   rayban,
   oakley,
   porsche,
@@ -114,20 +114,20 @@ export const stats = [
 
 export const socialMedia = [
   {
-    id: "social-media-1",
+    id: "meta",
     icon: facebook,
     link: "https://www.facebook.com/pollardsopticianswakefield/",
     target: "_blank",
   },
   {
-    id: "social-media-2",
+    id: "linkedin",
     icon: linkedin,
     link: "https://uk.linkedin.com/in/pollards-opticians-66716ba7",
     target: "_blank",
   },
   {
-    id: "social-media-3",
-    icon: twitter,
+    id: "x",
+    icon: x,
     link: "https://twitter.com/pollardsopti",
     target: "_blank",
   },

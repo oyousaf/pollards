@@ -14,7 +14,7 @@ import arrowUp from "./arrow-up.svg";
 import discount from "./Discount.svg";
 import facebook from "./facebook.svg";
 import linkedin from "./linkedin.svg";
-import twitter from "./twitter.svg";
+import x from "./twitter.svg";
 import mrpollard from "./mrpollard.jpg";
 import emma from "./emma.png";
 import denise from "./denise.png";
@@ -38,7 +38,7 @@ export {
   discount,
   facebook,
   linkedin,
-  twitter,
+  x,
   mrpollard,
   emma,
   denise,
