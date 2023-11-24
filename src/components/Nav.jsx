@@ -70,6 +70,10 @@ const Nav = () => {
                 />
               </button>
 
+              <a href="https://pollards.info" className="mt-6">
+                <img src={logo} alt="logo" className="w-[50px] h-[50px]" />
+              </a>
+
               <ul className="list-none flex flex-col items-center pt-[200px]">
                 {navLinks.map((nav) => (
                   <MobiLink
