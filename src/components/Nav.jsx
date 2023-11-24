@@ -58,7 +58,11 @@ const Nav = () => {
             <img src={menu} alt="menu" className="w-[28px] h-[28px]" />
           </button>
           {mobileMenuOpen && (
-            <div className="fixed inset-0 bg-[#C3B1E1] p-4 overflow-y-auto">
+            <div
+              className={`fixed inset-0 bg-[#C3B1E1] p-4 overflow-y-auto transition-transform transform ${
+                mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+              }`}
+            >
               <button
                 className="text-2xl text-primary"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -96,7 +100,7 @@ const Nav = () => {
                       key={social.id}
                       href={social.link}
                       target={social.target}
-                      className={`w-[30px] h-[30px] font-bold text-3xl text-gray-100 hover:text-primary/70 object-contain cursor-pointer ${
+                      className={`w-[30px] h-[30px] font-bold text-3xl text-gray-100 hover:text-primary object-contain cursor-pointer ${
                         index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
                       }`}
                     >

@@ -31,7 +31,7 @@ const Footer = () => (
                 key={social.id}
                 href={social.link}
                 target={social.target}
-                className={`text-3xl text-gray-100 hover:text-[#C3B1E1] object-contain cursor-pointer ${
+                className={`text-gray-100 hover:text-[#C3B1E1] object-contain cursor-pointer ${
                   index !== socialMedia.length - 1 ? "mr-6" : ""
                 }`}
               >

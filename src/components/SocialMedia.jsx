@@ -3,15 +3,15 @@ import { BsTwitterX } from "react-icons/bs";
 
 const socialMedia = [
   {
-    id: "insta",
-    icon: <FaInstagram />,
-    link: "https://instagram.com/pollards.opticians",
-    target: "_blank",
-  },
-  {
     id: "fb",
     icon: <FaFacebook />,
     link: "https://www.facebook.com/pollardsopticianswakefield/",
+    target: "_blank",
+  },
+  {
+    id: "insta",
+    icon: <FaInstagram />,
+    link: "https://instagram.com/pollards.opticians",
     target: "_blank",
   },
   {
