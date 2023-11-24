@@ -63,19 +63,21 @@ const Nav = () => {
                 mobileMenuOpen ? "translate-x-0" : "translate-x-full"
               }`}
             >
-              <button
-                className="text-2xl text-primary"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              >
+              <div>
                 <a href="https://pollards.info">
                   <img src={logo} alt="logo" className="w-[50px] h-[50px]" />
                 </a>
-                <img
-                  src={close}
-                  className="absolute right-5 w-[28px] h-[28px]"
-                  alt="close"
-                />
-              </button>
+                <button
+                  className="text-2xl text-primary"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                >
+                  <img
+                    src={close}
+                    className="absolute top-7 right-7 w-[28px] h-[28px]"
+                    alt="close"
+                  />
+                </button>
+              </div>
 
               <ul className="list-none flex flex-col items-center pt-[200px]">
                 {navLinks.map((nav) => (
