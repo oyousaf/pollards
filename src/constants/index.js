@@ -12,9 +12,6 @@ import {
   test,
 } from "../assets";
 
-import { FaFacebook, FaInstagram, FaLinkedIn } from "react-icons/fa";
-import { BsTwitterX } from "react-icons/bs";
-
 export const navLinks = [
   {
     to: "#home",
@@ -109,33 +106,6 @@ export const stats = [
     id: "stats-3",
     title: "Professional Experience",
     value: "10Y+",
-  },
-];
-
-export const socialMedia = [
-  {
-    id: "insta",
-    icon: <FaInstagram />,
-    link: "https://instagram.com/pollards.opticians",
-    target: "_blank",
-  },
-  {
-    id: "fb",
-    icon: <FaFacebook />,
-    link: "https://www.facebook.com/pollardsopticianswakefield/",
-    target: "_blank",
-  },
-  {
-    id: "linkedin",
-    icon: <FaLinkedIn />,
-    link: "https://uk.linkedin.com/in/pollards-opticians-66716ba7",
-    target: "_blank",
-  },
-  {
-    id: "x",
-    icon: <BsTwitterX />,
-    link: "https://x.com/pollardsopti",
-    target: "_blank",
   },
 ];
 

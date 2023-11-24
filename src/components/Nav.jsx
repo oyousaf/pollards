@@ -3,7 +3,8 @@ import NavLink from "./NavLink";
 import MobiLink from "./MobiLink";
 
 import { logo, menu, close } from "../assets";
-import { navLinks, socialMedia } from "../constants";
+import { navLinks } from "../constants";
+import { SocialMedia } from "./SocialMedia";
 
 const Nav = () => {
   const [scrolling, setScrolling] = useState(false);
