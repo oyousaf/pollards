@@ -67,16 +67,15 @@ const Nav = () => {
                 className="text-2xl text-primary"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
+                <a href="https://pollards.info">
+                  <img src={logo} alt="logo" className="w-[50px] h-[50px]" />
+                </a>
                 <img
                   src={close}
                   className="absolute right-5 w-[28px] h-[28px]"
                   alt="close"
                 />
               </button>
-
-              <a href="https://pollards.info" className="mt-6">
-                <img src={logo} alt="logo" className="w-[50px] h-[50px]" />
-              </a>
 
               <ul className="list-none flex flex-col items-center pt-[200px]">
                 {navLinks.map((nav) => (
