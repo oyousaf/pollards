@@ -1,10 +1,41 @@
 import React, { useState, useEffect } from "react";
 import NavLink from "./NavLink";
 import MobiLink from "./MobiLink";
-
 import { logo, menu, close } from "../assets";
 import { navLinks } from "../constants";
-import { SocialMedia } from "./SocialMedia";
+import {
+  FaInstagram,
+  FaFacebook,
+  FaLinkedin,
+  BsTwitter,
+} from "react-icons/all";
+
+const socialMedia = [
+  {
+    id: "insta",
+    icon: <FaInstagram />,
+    link: "https://instagram.com/pollards.opticians",
+    target: "_blank",
+  },
+  {
+    id: "fb",
+    icon: <FaFacebook />,
+    link: "https://www.facebook.com/pollardsopticianswakefield/",
+    target: "_blank",
+  },
+  {
+    id: "linkedin",
+    icon: <FaLinkedin />,
+    link: "https://uk.linkedin.com/in/pollards-opticians-66716ba7",
+    target: "_blank",
+  },
+  {
+    id: "x",
+    icon: <BsTwitter />,
+    link: "https://x.com/pollardsopti",
+    target: "_blank",
+  },
+];
 
 const Nav = () => {
   const [scrolling, setScrolling] = useState(false);
