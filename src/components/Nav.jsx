@@ -95,18 +95,14 @@ const Nav = () => {
                 <p className="flex flex-row bottom-0">
                   {socialMedia.map((social, index) => (
                     <a
+                      className={`w-[30px] h-[30px] object-contain cursor-pointer ${
+                        index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
+                      }`}
                       key={social.id}
                       href={social.link}
                       target={social.target}
                     >
-                      <img
-                        key={social.id}
-                        src={social.icon}
-                        alt={social.id}
-                        className={`w-[30px] h-[30px] object-contain cursor-pointer ${
-                          index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
-                        }`}
-                      />
+                      {social.icon}
                     </a>
                   ))}
                 </p>
