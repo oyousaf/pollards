@@ -71,7 +71,7 @@ export const features = [
 export const feedback = [
   {
     id: "feedback-1",
-    content: `Always receive fantastic support and service from Fizz. As someone who suffers from keratoconus, Fizz has been helping me for years to get my vision to a great standard. Always on hand with 
+    content: `Always receive fantastic support and service from Fizz. As someone who suffers from Keratoconus, Fizz has been helping me for years to get my vision to a great standard. Always on hand with 
     any issues and readily available with great advice, Fizz has restored my vision!`,
     name: "Aamir Akudi",
     title: "Fantastic Support",
