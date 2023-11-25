@@ -4,7 +4,7 @@ const Gmap = () => {
   const latitude = 53.68284408412487;
   const longitude = -1.4990073382300537;
 
-  const mapUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAGxUo0VsJc0lDtVEN94u8Rv_yE9u9p7fo&q=Pollards+Opticians&center=${latitude},${longitude}&zoom=19`;
+  const mapUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAGxUo0VsJc0lDtVEN94u8Rv_yE9u9p7fo&q=Pollards+Opticians&center=${latitude},${longitude}&zoom=18`;
 
   return (
     <div className="w-full h-96 mb-[30px]">
