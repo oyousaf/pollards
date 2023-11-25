@@ -13,7 +13,7 @@ const Endorsements = () => (
       <br className="sm:block hidden" />
       <div className="w-full md:mt-0 mt-6">
         <p className={`${styles.paragraph} text-left max-w-[450px]`}>
-          Unleashing the epic tales of our awesome customers!
+          Epic tales from our awesome customers!
         </p>
       </div>
     </div>
