@@ -50,21 +50,23 @@ export const features = [
   {
     id: "feature-1",
     icon: glasses,
-    title: "Frames",
-    content: "Supplying a range of glasses and frames to cater to all needs",
+    title: "Spectacles",
+    content:
+      "We offer a comprehensive selection of glasses and frames to meet every need, accompanied by thorough fitting sessions to ensure the perfect match for your style and comfort.",
   },
   {
     id: "feature-2",
     icon: eye,
     title: "Contact Lens Specialists",
     content:
-      "We supply all types of contact lenses including disposable, extended-wear, hard, and soft lenses",
+      "We supply a variety of contact lenses, including disposable, extended-wear, hard, and soft lenses. Additionally, we provide specialist contact lenses tailored for different conditions such as Keratoconus, ensuring personalised solutions for all your eye care requirements.",
   },
   {
     id: "feature-3",
     icon: test,
-    title: "Sight Tests",
-    content: "Providing comprehensive sight tests and fitting sessions",
+    title: "Vision Assessments",
+    content:
+      "We offer thorough sight tests, featuring advanced 3D Ocular Coherence Tomography (OCT) examinations. During this process, we capture high-resolution digital images of the inner surface of your eyes. Our comprehensive sight tests ensure a detailed and precise evaluation of your eye health, allowing us to provide the most accurate and personalised care.",
   },
 ];
 
@@ -74,7 +76,7 @@ export const feedback = [
     content: `Always receive fantastic support and service from Fizz. As someone who suffers from Keratoconus, Fizz has been helping me for years to get my vision to a great standard. Always on hand with 
     any issues and readily available with great advice, Fizz has restored my vision!`,
     name: "Aamir Akudi",
-    title: "Fantastic Support",
+    title: "Fantastic support",
   },
   {
     id: "feedback-2",
@@ -84,8 +86,8 @@ export const feedback = [
   },
   {
     id: "feedback-3",
-    content: `Absolutely fantastic, my son has nystagmus as well as an eye drift, all of the team at Pollards were absolutely brilliant with him from his eye test with Matthew, his review with Fizz, his 
-    glasses choice with Denise, and his glasses fitting with Emma, nothing was too much trouble - we will be back!! Thank you for everything you did to help x`,
+    content: `Absolutely fantastic! My son has Nystagmus as well as an eye drift. All of the team at Pollards were absolutely brilliant with him from his eye test with Matthew, his review with Fizz, his 
+    glasses choice with Denise, and his glasses fitting with Emma; nothing was too much trouble - we will be back!! Thank you for everything you did to help x`,
     name: "Sara O'Hara",
     title: "Absolutely brilliant",
   },
