@@ -2,8 +2,15 @@ import React from "react";
 import styles from "../style";
 import { BsArrowDownShort } from "react-icons/bs";
 
+const scrollToSection = (id) => {
+  const element = document.getElementById(id.substring(1));
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
 const Explore = () => (
-  <a href="#about">
+  <a onClick={() => scrollToSection("#about")}>
     <div
       className={`${styles.flexCenter} w-[140px] h-[140px] rounded-full bg-pink-gradient p-[2px] cursor-pointer`}
     >

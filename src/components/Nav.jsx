@@ -42,11 +42,7 @@ const Nav = () => {
 
         <div className="hidden sm:flex items-center space-x-6">
           {navLinks.map((nav) => (
-            <NavLink
-              key={nav.id}
-              href={nav.to}
-              onClick={() => scrollToSection(nav.to)}
-            >
+            <NavLink key={nav.id} onClick={() => scrollToSection(nav.to)}>
               {nav.title}
             </NavLink>
           ))}
@@ -83,7 +79,6 @@ const Nav = () => {
                 {navLinks.map((nav) => (
                   <MobiLink
                     key={nav.id}
-                    href={nav.to}
                     onClick={() => {
                       scrollToSection(nav.to);
                       setMobileMenuOpen(!mobileMenuOpen);
