@@ -40,7 +40,7 @@ const Nav = () => {
           </a>
         </div>
 
-        <div className="hidden sm:flex items-center space-x-6">
+        <div className="hidden sm:flex justify-center items-center flex-grow space-x-6">
           {navLinks.map((nav) => (
             <NavLink key={nav.id} onClick={() => scrollToSection(nav.to)}>
               {nav.title}
