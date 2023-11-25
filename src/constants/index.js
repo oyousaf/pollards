@@ -147,6 +147,6 @@ export const team = [
   {
     id: 4,
     image: michael,
-    name: "Michael",
+    name: "Matthew",
   },
 ];
