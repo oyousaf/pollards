@@ -1,7 +1,20 @@
 import React from "react";
 import styles from "./style";
-import { Nav, Hero, Stats, About, Info, Team, Endorsements, Gallery, CTA, Footer, Clients } from "./components";
-import { BrowserRouter as Router } from 'react-router-dom';
+import {
+  Nav,
+  Hero,
+  Stats,
+  About,
+  Info,
+  Team,
+  Endorsements,
+  Gallery,
+  CTA,
+  Footer,
+  Clients,
+} from "./components";
+import { BrowserRouter as Router } from "react-router-dom";
+import { reportWebVitals } from "./reportWebVitals";
 
 const App = () => (
   <Router>
@@ -33,5 +46,6 @@ const App = () => (
     </div>
   </Router>
 );
+reportWebVitals();
 
 export default App;
