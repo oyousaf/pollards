@@ -12,7 +12,7 @@ const Footer = () => (
   >
     <Gmap />
 
-    <div className={`${styles.flexStart} mb-8 w-full`}>
+    <div className={`${styles.flexStart} mb-8 pt-6 w-full`}>
       <div className="flex-1 flex flex-col justify-center items-center">
         <a href="https://pollards.info">
           <img
