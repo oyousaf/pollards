@@ -73,7 +73,7 @@ export const features = [
 export const feedback = [
   {
     id: "feedback-1",
-    content: `Fantastic knowledge and care shown by Pollards Opticians. They have gone above and beyond in assisting my dry eye condition and I would highly recommend using them.`,
+    content: `Fantastic knowledge and care shown by Pollards Opticians. They have gone above and beyond in assisting my dry eye condition and I would highly recommend them.`,
     name: "Scott Jackson",
     title: "Fantastic knowledge",
   },
