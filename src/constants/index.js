@@ -57,7 +57,7 @@ export const features = [
   {
     id: "feature-2",
     icon: eye,
-    title: "Contact Lens Specialists",
+    title: "Contact Lenses",
     content:
       "We supply a variety of contact lenses, including disposable, extended-wear, hard, and soft lenses. Additionally, we provide specialist contact lenses tailored for different conditions such as Keratoconus, ensuring personalised solutions for all your eye care requirements.",
   },
@@ -149,6 +149,6 @@ export const team = [
   {
     id: 4,
     image: michael,
-    name: "Matthew",
+    name: "Matty",
   },
 ];
