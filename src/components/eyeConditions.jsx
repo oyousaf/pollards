@@ -20,11 +20,6 @@ const eyeConditions = [
       "Blepharitis is an inflammation of the eyelids, often caused by bacterial or skin conditions. It can result in redness, itching, and the formation of crusts on the eyelashes.",
   },
   {
-    title: "Birdshot Uveitis",
-    description:
-      "Birdshot Chorioretinopathy is a rare, progressive inflammation of the iris, choroid and cilary body, which together make up a part of the eye known as the uvea. If left undiagnosed or untreated, the condition can cause blindness.",
-  },
-  {
     title: "Cataracts",
     description:
       "Cataracts are a common eye condition in which the lens inside the eye gradually becomes less transparent with age. Over time, a cataract can become worse, making vision cloudier, but it is usually treatable with a straightforward operation.",
