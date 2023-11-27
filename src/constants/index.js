@@ -73,7 +73,7 @@ export const features = [
 export const feedback = [
   {
     id: "feedback-1",
-    content: `Fantastic knowledge and care shown by Pollards Opticians. They have gone above and beyond in assisting my dry eye condition and I would highly recommend using them`,
+    content: `Fantastic knowledge and care shown by Pollards Opticians. They have gone above and beyond in assisting my dry eye condition and I would highly recommend using them.`,
     name: "Scott Jackson",
     title: "Fantastic knowledge",
   },
@@ -86,7 +86,7 @@ export const feedback = [
   {
     id: "feedback-3",
     content: `Absolutely fantastic! My son has Nystagmus as well as an eye drift. All of the team at Pollards were absolutely brilliant with him from his eye test with Matthew, his review with Fizz, his 
-    glasses choice with Denise, and his glasses fitting with Emma; nothing was too much trouble - we will be back!! Thank you for everything you did to help x`,
+    glasses choice with Denise, and his glasses fitting with Emma; nothing was too much trouble - we will be back!! Thank you for everything you did to help!`,
     name: "Sara O'Hara",
     title: "Absolutely brilliant",
   },
