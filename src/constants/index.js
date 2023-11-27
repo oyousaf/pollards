@@ -85,8 +85,8 @@ export const feedback = [
   },
   {
     id: "feedback-3",
-    content: `Absolutely fantastic! My son has Nystagmus as well as an eye drift. All of the team at Pollards were absolutely brilliant with him from his eye test with Matthew, his review with Fizz, his 
-    glasses choice with Denise, and his glasses fitting with Emma; nothing was too much trouble - we will be back!! Thank you for everything you did to help!`,
+    content: `Absolutely fantastic! My son has Nystagmus as well as an eye drift. All of the team at Pollards were absolutely brilliant with him from his eye test with Matthew, review with Fizz,
+    glasses choice with Denise, and glasses fitting with Emma; nothing was too much trouble - we will be back!! Thank you for everything you did to help!`,
     name: "Sara O'Hara",
     title: "Absolutely brilliant",
   },
