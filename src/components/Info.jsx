@@ -12,7 +12,7 @@ const Info = () => (
         <Grid key={index} css={{ dflex: "center" }}>
           <Tooltip color="secondary" content={condition.description}>
             <Button
-              className="bg-[#63B7B7] hover:bg-[#008080] text-[#9f34b5] hover:text-[#C3B1E1] font-bold py-2 px-4 rounded shadow-md shadow-[#008080] 
+              className="bg-[#C3B1E1] hover:bg-[#008080] text-[#9f34b5] hover:text-white shadow-md shadow-[#C3B1E1] font-bold py-2 px-4 rounded 
                 hover:scale-110 duration-500"
             >
               {condition.title}
