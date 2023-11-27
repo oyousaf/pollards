@@ -73,16 +73,15 @@ export const features = [
 export const feedback = [
   {
     id: "feedback-1",
-    content: `Always receive fantastic support and service from Fizz. As someone who suffers from Keratoconus, Fizz has been helping me for years to get my vision to a great standard. Always on hand with 
-    any issues and readily available with great advice, Fizz has restored my vision!`,
-    name: "Aamir Akudi",
-    title: "Fantastic support",
+    content: `Fantastic knowledge and care shown by Pollards Opticians. They have gone above and beyond in assisting my dry eye condition and I would highly recommend using them`,
+    name: "Scott Jackson",
+    title: "Fantastic knowledge",
   },
   {
     id: "feedback-2",
     content: `Fantastic professional service. The team really put you at ease here. After only two visits I now have vision in my left eye after 8 years of blurred vision.`,
     name: "Mick Cleeve",
-    title: "Professional service",
+    title: "Fantastic professional service",
   },
   {
     id: "feedback-3",
