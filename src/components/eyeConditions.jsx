@@ -1,7 +1,8 @@
 const eyeConditions = [
   {
     title: "Age-related Macular Degeneration (AMD)",
-    description: "(AMD) is a form of macular dystrophy. ...",
+    description:
+      "Age-related Macular Degeneration (AMD) is a progressive eye condition that affects the macula, a small but crucial part of the retina located at the back of the eye. The macula is responsible for sharp central vision, enabling activities such as reading, writing, and recognizing colors. AMD specifically targets the cone cells in the macula, which play a key role in fine detail vision. As AMD advances, these cone cells become damaged, leading to a decline in central vision and overall visual function",
   },
   {
     title: "Amblyopia (Lazy Eye)",
