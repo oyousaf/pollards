@@ -2,7 +2,7 @@ const eyeConditions = [
   {
     title: "Age-related Macular Degeneration (AMD)",
     description:
-      "Age-related Macular Degeneration (AMD) is a progressive eye condition that affects the macula, a small but crucial part of the retina located at the back of the eye. The macula is responsible for sharp central vision, enabling activities such as reading, writing, and recognizing colors. AMD specifically targets the cone cells in the macula, which play a key role in fine detail vision. As AMD advances, these cone cells become damaged, leading to a decline in central vision and overall visual function",
+      "Age-related Macular Degeneration (AMD) is a progressive eye condition that affects the macula, a small but crucial part of the retina located at the back of the eye. The macula is responsible for sharp central vision, enabling activities such as reading, writing, and recognising colours. AMD specifically targets the cone cells in the macula, which play a key role in fine detail vision. As AMD advances, these cone cells become damaged, leading to a decline in central vision and overall visual function",
   },
   {
     title: "Amblyopia (Lazy Eye)",
@@ -12,7 +12,7 @@ const eyeConditions = [
   {
     title: "Astigmatism",
     description:
-      "Astigmatism is a refractive error caused by an irregular shape of the cornea or lens, leading to blurred or distorted vision. It can coexist with nearsightedness or farsightedness.",
+      "Astigmatism is a refractive error caused by an irregular shape of the cornea or lens, leading to blurred or distorted vision. It can coexist with shortsightedness or longsightedness.",
   },
   {
     title: "Blepharitis",
@@ -30,9 +30,9 @@ const eyeConditions = [
       "Charles Bonnet Syndrome (CBS) is a condition which causes vivid, silent, visual hallucinations. It can develop in a person of any age – children are not exempt – when over 60% of sight is lost. Not everyone who loses sight develops CBS.",
   },
   {
-    title: "Color Blindness",
+    title: "Colour Blindness",
     description:
-      "Color blindness is a genetic condition that affects a person's ability to perceive certain colors accurately. The most common type is red-green color blindness, where individuals may have difficulty distinguishing between red and green hues.",
+      "Colour blindness is a genetic condition that affects a person's ability to perceive certain colours accurately. The most common type is red-green colour blindness, where individuals may have difficulty distinguishing between red and green hues.",
   },
   {
     title: "Conjunctivitis (Pink Eye)",
@@ -70,9 +70,9 @@ const eyeConditions = [
       "Keratoconus is a progressive eye condition where the normally dome-shaped cornea thins and begins to bulge into a cone-like shape. This distortion deflects light as it enters the eye on the way to the retina, which causes distorted vision.",
   },
   {
-    title: "Macular Edema",
+    title: "Macular Oedema",
     description:
-      "Macular edema is a condition characterized by the accumulation of fluid in the macula, the central part of the retina. This can lead to distorted or blurred central vision, impacting activities like reading and recognizing faces.",
+      "Macular oedema is a condition characterised by the accumulation of fluid in the macula, the central part of the retina. This can lead to distorted or blurred central vision, impacting activities like reading and recognising faces.",
   },
   {
     title: "Night Blindness",
@@ -82,7 +82,7 @@ const eyeConditions = [
   {
     title: "Nystagmus",
     description:
-      "Nystagmus is a condition characterized by involuntary and repetitive eye movements. These movements can affect vision, causing reduced visual acuity and depth perception.",
+      "Nystagmus is a condition characterised by involuntary and repetitive eye movements. These movements can affect vision, causing reduced visual acuity and depth perception.",
   },
   {
     title: "Ocular Hypertension",
@@ -107,7 +107,7 @@ const eyeConditions = [
   {
     title: "Ptosis",
     description:
-      "Ptosis is the drooping of the upper eyelid, which can partially or completely cover the eye. It may be congenital (present at birth) or acquired due to aging, injury, or other factors. Ptosis can impact both the appearance and function of the eye.",
+      "Ptosis is the drooping of the upper eyelid, which can partially or completely cover the eye. It may be congenital (present at birth) or acquired due to ageing, injury, or other factors. Ptosis can impact both the appearance and function of the eye.",
   },
   {
     title: "Retinal Detachment",
@@ -117,7 +117,7 @@ const eyeConditions = [
   {
     title: "Retinitis Pigmentosa",
     description:
-      "Retinitis Pigmentosa (RP) is the name given to a group of inherited eye conditions called retinal dystrophies. These conditions cause a slow loss of vision, beginning with night vision and peripheral (side) vision and eventually affecting central, color, and reading vision.",
+      "Retinitis Pigmentosa (RP) is the name given to a group of inherited eye conditions called retinal dystrophies. These conditions cause a slow loss of vision, beginning with night vision and peripheral (side) vision and eventually affecting central, colour, and reading vision.",
   },
   {
     title: "Strabismus",
