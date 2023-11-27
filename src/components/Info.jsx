@@ -1,5 +1,5 @@
 import { Tooltip, Button, Grid } from "@nextui-org/react";
-import { layout } from "../style";
+import styles, { layout } from "../style";
 import eyeConditions from "./eyeConditions";
 
 const Info = () => (
