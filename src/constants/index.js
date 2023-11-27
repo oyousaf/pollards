@@ -73,13 +73,13 @@ export const features = [
 export const feedback = [
   {
     id: "feedback-1",
-    content: `Fantastic knowledge and care shown by Pollards Opticians. They have gone above and beyond in assisting my dry eye condition and I would highly recommend them.`,
+    content: `Fantastic knowledge and care shown by Pollards Opticians. They have gone above and beyond in assisting my dry eye condition and I would highly recommend them!`,
     name: "Scott Jackson",
     title: "Fantastic knowledge",
   },
   {
     id: "feedback-2",
-    content: `Fantastic professional service. The team really put you at ease here. After only two visits I now have vision in my left eye after 8 years of blurred vision.`,
+    content: `Fantastic professional service. The team really put you at ease here. After only two visits I now have vision in my left eye after 8 years of blurred vision!`,
     name: "Mick Cleeve",
     title: "Fantastic professional service",
   },
