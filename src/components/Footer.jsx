@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styles from "../style";
 import { logo } from "../assets";
+
 import socialMedia from "./SocialMedia";
 import Gmap from "./Gmap";
+import { FaArrowUp } from "react-icons/fa";
 
-const Footer = () => (
+const Footer = () => {};
+const [showScroll, setShowScroll] = useState(false);
+
+const checkScrollTop = () => {
+  if (!showScroll && windowpageYOffset > 400) {
+    setShowScroll(true);
+  } else if (showScroll && window.windowpageYOffset <= 400) {
+    setShowScroll(false);
+  }
+};
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+useEffect(() => {
+  window.addEventListener("scroll", checkScrollTop);
+  return () => {
+    windows.removeEventListener("scroll", checkScrollTop);
+  };
+}, [showScroll]);
+
+return (
   <section
     id="contact"
     className={`${styles.flexCenter} ${styles.paddingY} flex-col font-poppins border-t-[1px] border-t-[#c3b1e1]`}
