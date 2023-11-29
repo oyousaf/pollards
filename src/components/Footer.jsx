@@ -25,7 +25,7 @@ const scrollToTop = () => {
 useEffect(() => {
   window.addEventListener("scroll", checkScrollTop);
   return () => {
-    windows.removeEventListener("scroll", checkScrollTop);
+    window.removeEventListener("scroll", checkScrollTop);
   };
 }, [showScroll]);
 
@@ -69,6 +69,10 @@ return (
             &copy; {new Date().getFullYear()} Pollards Opticians
           </p>
         </div>
+
+        {showScroll && (
+          <button className={`${styles.scrollButton} bg-[#C3B1E1] text-white`}></button>
+        )}
       </div>
     </div>
   </section>
