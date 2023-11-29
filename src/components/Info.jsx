@@ -1,4 +1,4 @@
-import { Tooltip, Button, Grid } from "@nextui-org/react";
+import { Tooltip, Grid } from "@nextui-org/react";
 import styles, { layout } from "../style";
 import eyeConditions from "./eyeConditions";
 
@@ -11,12 +11,12 @@ const Info = () => (
       {eyeConditions.map((condition, index) => (
         <Grid key={index} css={{ dflex: "center" }}>
           <Tooltip color="secondary" content={condition.description}>
-            <Button
-              className="bg-[#C3B1E1] hover:bg-[#008080] text-[#9f34b5] hover:text-white shadow-md shadow-[#C3B1E1] font-bold py-2 px-4 rounded 
+            <button
+              className="bg-[#C3B1E1] hover:bg-[#008080] text-[#9f34b5] hover:text-white shadow-md shadow-[#C3B1E1] hover:shadow-[#008080] font-bold py-2 px-4 rounded 
                 hover:scale-110 duration-500"
             >
               {condition.title}
-            </Button>
+            </button>
           </Tooltip>
         </Grid>
       ))}

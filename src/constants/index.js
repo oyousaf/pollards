@@ -106,7 +106,7 @@ export const stats = [
   {
     id: "stats-3",
     title: "Professional Experience",
-    value: "10Y+",
+    value: `${new Date().getFullYear() - 2009}Y+`,
   },
 ];
 
