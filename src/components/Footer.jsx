@@ -11,9 +11,9 @@ const Footer = () => {
   const [showScroll, setShowScroll] = useState(false);
 
   const checkScrollTop = () => {
-    if (!showScroll && windowpageYOffset > 400) {
+    if (!showScroll && window.pageYOffset > 400) {
       setShowScroll(true);
-    } else if (showScroll && window.windowpageYOffset <= 400) {
+    } else if (showScroll && window.pageYOffset <= 400) {
       setShowScroll(false);
     }
   };
