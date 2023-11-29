@@ -71,7 +71,9 @@ return (
         </div>
 
         {showScroll && (
-          <button className={`${styles.scrollButton} bg-[#C3B1E1] text-white`}></button>
+          <button
+            className={`${styles.scrollButton} bg-[#C3B1E1] text-white p-2 rounded-full fixed bottom-7 right-7`}
+          ></button>
         )}
       </div>
     </div>
