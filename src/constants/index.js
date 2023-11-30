@@ -79,9 +79,13 @@ export const feedback = [
   },
   {
     id: "feedback-2",
-    content: `Fantastic professional service. The team really put you at ease here. After only two visits I now have vision in my left eye after 8 years of blurred vision!`,
-    name: "Mick Cleeve",
-    title: "Fantastic professional service",
+    content: `I went to Pollards after having tried and failed to get contact lenses at Vision Express. I struggled getting them in and out at Vision Express and was told that contact lenses weren't for me.
+
+    The Pollards team managed to get me fitted and taking them in and out by myself on my first visit. The teaching, patience, professionalism and all round service was on a completely different level to that which I had experienced at Vision Express. I can't thank the Pollards team enough, having varifocal contact lenses is literally life changing!
+    
+    Thoroughly recommended! Thank you!`,
+    name: "Matthew Denison",
+    title: "Patience and professionalism",
   },
   {
     id: "feedback-3",
