@@ -12,7 +12,8 @@ const Clients = () => (
           <img
             src={client.logo}
             alt="client"
-            className="sm:w-[200px] w-[100px] object-contain"
+            width={100}
+            className="sm:w-[200px] object-contain"
           />
         </div>
       ))}

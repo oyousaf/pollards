@@ -14,7 +14,7 @@ const Hero = () => (
       <div className="flex flex-row items-center py-[6px] px-4 bg-[#C3B1E1] rounded-[10px] mb-2">
         <img src={discount} alt="discount" className="w-[32px] h-[32px]" />
         <p className={`${styles.paragraph} ml-2`}>
-          <span className="text-white">
+          <span className="text-primary">
             Providing innovative eye care and an exemplary service for all
           </span>
         </p>
@@ -28,7 +28,7 @@ const Hero = () => (
           <Explore />
         </div>
       </div>
-      <p className={`${styles.paragraph} max-w-[570px] mt-5`}>
+      <p className={`${styles.paragraph} max-w-[570px] mt-5 text-white`}>
         Visionaries see beyond the boundaries of eyesight
       </p>
     </div>
@@ -37,7 +37,9 @@ const Hero = () => (
       <img
         src={mrpollard}
         alt="pollard"
-        className="w-[200px] md:w-[400px] h-[100%] z-[5] relative rounded-xl mr-3"
+        width={200}
+        height="100%"
+        className="md:w-[400px] z-[5] relative rounded-xl mr-3"
       />
       <div className={`ss:hidden ${styles.flexCenter}`}>
         <Explore />

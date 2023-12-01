@@ -19,7 +19,9 @@ const Bubbles = () => {
             <img
               src={member.image}
               alt={member.name}
-              className="w-30 h-30 rounded-full"
+              width={300}
+              height={300}
+              className="rounded-full"
               style={{
                 animation: `floatAnimation 3s ease-in-out infinite`,
               }}
