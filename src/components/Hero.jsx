@@ -38,7 +38,7 @@ const Hero = () => (
         src={mrpollard}
         alt="mrpollard"
         width={200}
-        height="100%"
+        height={100}
         className="md:w-[400px] z-[5] relative rounded-xl mr-3"
       />
       <div className={`ss:hidden ${styles.flexCenter}`}>
