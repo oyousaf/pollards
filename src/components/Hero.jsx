@@ -36,7 +36,7 @@ const Hero = () => (
     <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
       <img
         src={mrpollard}
-        alt="pollard"
+        alt="mrpollard"
         width={200}
         height="100%"
         className="md:w-[400px] z-[5] relative rounded-xl mr-3"
