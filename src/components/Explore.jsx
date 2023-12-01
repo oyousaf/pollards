@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../style";
 import { BsArrowDownShort } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const scrollToSection = (id) => {
   const element = document.getElementById(id.substring(1));
@@ -10,7 +11,7 @@ const scrollToSection = (id) => {
 };
 
 const Explore = () => (
-  <a onClick={() => scrollToSection("#about")}>
+  <Link onClick={() => scrollToSection("#about")}>
     <div
       className={`${styles.flexCenter} w-[140px] h-[140px] rounded-full bg-pink-gradient p-[2px] cursor-pointer`}
     >
@@ -26,7 +27,7 @@ const Explore = () => (
         </div>
       </div>
     </div>
-  </a>
+  </Link>
 );
 
 export default Explore;
