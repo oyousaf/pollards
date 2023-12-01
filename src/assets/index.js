@@ -12,11 +12,11 @@ import menu from "./menu.svg";
 import close from "./close.svg";
 import arrowUp from "./arrow-up.svg";
 import discount from "./Discount.svg";
-import mrpollard from "./mrpollard.jpg";
-import emma from "./emma.png";
-import denise from "./denise.png";
-import fizz from "./fizz.png";
-import michael from "./michael.png";
+import mrpollard from "./mrpollard.webp";
+import emma from "./emma.webp";
+import denise from "./denise.webp";
+import fizz from "./fizz.webp";
+import michael from "./michael.webp";
 
 export {
   rayban,
