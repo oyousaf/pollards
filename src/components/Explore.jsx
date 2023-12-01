@@ -16,13 +16,11 @@ const Explore = () => (
       className={`${styles.flexCenter} w-[140px] h-[140px] rounded-full bg-pink-gradient p-[2px] cursor-pointer`}
     >
       <div
-        className={`${styles.flexCenter} flex-col bg-[#C3B1E1] w-[100%] h-[100%] rounded-full`}
+        className={`${styles.flexCenter} flex-col bg-[#C3B1E1] w-[100%] h-[100%] rounded-full text-primary hover:text-white text-center transition-all duration-300`}
       >
         <div className={`${styles.flexStart} flex-row`}>
-          <p className="font-poppins font-medium text-[18px] leading-[23px]">
-            <span className="text-gray-100 text-center">Explore</span>
-
-            <BsArrowDownShort className="ml-3 w-[40px] h-[40px] animate-bounce text-primary hover:text-white" />
+          <p className="font-poppins font-bold text-[18px] leading-[23px]">
+            <BsArrowDownShort className=" w-[70px] h-[70px] text-bold animate-bounce" />
           </p>
         </div>
       </div>
