@@ -16,7 +16,7 @@ const Explore = () => (
       className={`${styles.flexCenter} w-[100px] h-[100px] rounded-full bg-pink-gradient p-[2px] cursor-pointer`}
     >
       <div
-        className={`${styles.flexCenter} flex-col bg-[#C3B1E1] w-[100%] h-[100%] rounded-full text-primary hover:text-white text-center transition-all ease-in duration-300`}
+        className={`${styles.flexCenter} flex-col bg-[#C3B1E1] w-[100%] h-[100%] rounded-full text-[#002D04] hover:text-white text-center transition-all ease-in duration-300`}
       >
         <div className={`${styles.flexStart} flex-row`}>
           <p className="font-poppins font-bold text-[18px] leading-[23px]">
