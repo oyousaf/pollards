@@ -73,7 +73,7 @@ const Footer = () => {
 
           {showScroll && (
             <button
-              className="bg-[#C3B1E1] text-primary hover:text-white p-2 rounded-full transition-all ease-in duration-300 fixed bottom-7 right-7 z-50"
+              className="bg-[#C3B1E1] text-primary hover:text-white text-2xl md:text-4xl p-2 rounded-full transition-all ease-in duration-300 fixed bottom-7 right-7 z-50"
               onClick={scrollToTop}
             >
               <FaArrowUp />
