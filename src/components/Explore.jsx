@@ -11,7 +11,7 @@ const scrollToSection = (id) => {
 };
 
 const Explore = () => (
-  <Link alt="about" onClick={() => scrollToSection("#about")}>
+  <Link onClick={() => scrollToSection("#about")}>
     <div
       className={`${styles.flexCenter} w-[100px] h-[100px] rounded-full bg-pink-gradient p-[2px] cursor-pointer`}
     >
