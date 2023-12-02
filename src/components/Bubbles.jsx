@@ -25,6 +25,7 @@ const Bubbles = () => {
               style={{
                 animation: `floatAnimation 3s ease-in-out infinite`,
               }}
+              loading="lazy"
             />
             <p className="text-gray-100 text-2xl italic">{member.name}</p>
           </div>

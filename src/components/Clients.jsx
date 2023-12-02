@@ -15,6 +15,7 @@ const Clients = () => (
             width={100}
             height="100%"
             className="sm:w-[200px] object-contain"
+            loading="lazy"
           />
         </div>
       ))}
