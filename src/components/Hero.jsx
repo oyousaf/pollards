@@ -14,7 +14,7 @@ const Hero = () => (
       <div className="flex flex-row items-center py-[6px] px-4 bg-[#C3B1E1] rounded-[10px] mb-2">
         <img src={discount} alt="discount" className="w-[32px] h-[32px]" />
         <p className={`${styles.paragraph} ml-2`}>
-          <span className="text-primary">
+          <span className="text-[#002D04]">
             Providing innovative eye care and an exemplary service for all
           </span>
         </p>

@@ -17,7 +17,7 @@ const NavLink = ({ to, onClick, children }) => {
     <RouterNavLink
       to={to}
       onClick={handleClick}
-      className="font-poppins font-medium cursor-pointer text-[20px] text-white hover:text-gray-100 active:text-[#C3B1E1]"
+      className="font-poppins font-medium cursor-pointer text-[20px] text-white hover:text-[#C3B1E1]"
     >
       {children}
     </RouterNavLink>
