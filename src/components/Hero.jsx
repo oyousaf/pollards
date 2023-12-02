@@ -4,24 +4,10 @@ import { discount, mrpollard } from "../assets";
 import Explore from "./Explore";
 
 const Hero = () => {
-  // useEffect to preload the mrpollard image
+  // Use useEffect to preload the mrpollard image
   useEffect(() => {
     const img = new Image();
     img.src = mrpollard;
-    // Event listener to handle the 'load' event
-    img.addEventListener("load", () => {
-      console.log("mrpollard image preloaded");
-    });
-    // Handle the 'error' event
-    img.addEventListener("error", (error) => {
-      console.error("Error preloading mrpollard image:", error);
-    });
-
-    // Cleanup: Remove event listeners when the component unmounts
-    return () => {
-      img.removeEventListener("load", () => {});
-      img.removeEventListener("error", () => {});
-    };
   }, []);
 
   return (
