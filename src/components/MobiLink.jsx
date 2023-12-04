@@ -17,7 +17,7 @@ const MobiLink = ({ to, onClick, children }) => {
     <RouterNavLink
       to={to}
       onClick={handleClick}
-      className="font-poppins font-bold cursor-pointer text-[25px] text-primary hover:text-gray-100 mb-4"
+      className="font-poppins font-bold cursor-pointer text-[25px] text-primary hover:text-gray-100 mb-4 transition ease-in duration-100"
     >
       {children}
     </RouterNavLink>
