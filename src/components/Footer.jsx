@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 
 import styles from "../style";
 import { logo } from "../assets";
 
 import socialMedia from "./SocialMedia";
-import Gmap from "./Gmap";
 import { FaArrowUp } from "react-icons/fa";
+
+const LazyGmap = lazy(() => import("./Gmap"));
 
 const Footer = () => {
   const [showScroll, setShowScroll] = useState(false);
@@ -34,7 +35,9 @@ const Footer = () => {
       id="contact"
       className={`${styles.flexCenter} ${styles.paddingY} flex-col font-poppins border-t-[1px] border-t-[#c3b1e1]`}
     >
-      <Gmap />
+      <Suspense fallback={<div>Loading...</div>}>
+        {showScroll && <LazyGmap />}
+      </Suspense>
 
       <div className={`${styles.flexStart} mb-8 pt-6 w-full`}>
         <div className="flex-1 flex flex-col justify-center items-center">
