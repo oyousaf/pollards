@@ -79,16 +79,15 @@ export const feedback = [
   },
   {
     id: "feedback-2",
-    content: `Fantastic professional service. The team really put you at ease here. After only two visits I now have vision in my left eye after 8 years of blurred vision!`,
-    name: "Mick Cleeve",
-    title: "Fantastic professional service",
+    content: `As a patient at Pollards, I can 100% guarantee the experience here is always amazing. The staff acting as friends and always putting a smile on my face. Treatment also 100%. Grateful towards the team. Thank you!`,
+    name: "Zareen Imran",
+    title: "100% Treatment",
   },
   {
     id: "feedback-3",
-    content: `Absolutely fantastic! My son has Nystagmus as well as an eye drift. All of the team at Pollards were absolutely brilliant with him from his eye test with Matthew, review with Fizz,
-    glasses choice with Denise, and glasses fitting with Emma; nothing was too much trouble - we will be back!! Thank you for everything you did to help!`,
-    name: "Sara O'Hara",
-    title: "Absolutely brilliant",
+    content: `Fantastic professional service. The team really put you at ease here. After only two visits I now have vision in my left eye after 8 years of blurred vision!`,
+    name: "Mick Cleeve",
+    title: "Fantastic professional service",
   },
 ];
 
