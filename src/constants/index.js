@@ -144,9 +144,12 @@ export const team = [
     image: fizz,
     name: "Fizz",
   },
+{/*
   {
     id: 4,
     image: michael,
     name: "Matty",
   },
+*/}
+
 ];
