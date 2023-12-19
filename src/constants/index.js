@@ -94,7 +94,7 @@ export const feedback = [
 export const stats = [
   {
     id: "stats-1",
-    title: "2009",
+    title: "1983",
     value: "EST.",
   },
   {
@@ -105,7 +105,7 @@ export const stats = [
   {
     id: "stats-3",
     title: "Professional Experience",
-    value: `${new Date().getFullYear() - 2009}Y+`,
+    value: `${new Date().getFullYear() - 1983}Y+`,
   },
 ];
 
