@@ -4,7 +4,7 @@ const sendToAnalytics = ({ id, name, value }) => {
   window.gtag('event', name, {
     event_category: 'Web Vitals',
     event_label: id,
-    value: Math.round(name === 'CLS' ? value * 1000 : value),
+    value: Math.round(value * 1000),
     non_interaction: true,
   });
 };
