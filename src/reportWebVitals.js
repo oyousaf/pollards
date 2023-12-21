@@ -1,8 +1,8 @@
-import { getCLS, getFID, getLCP, getFCP, getTTFB } from 'web-vitals';
+import { getCLS, getFID, getLCP, getFCP, getTTFB } from "web-vitals";
 
 const sendToAnalytics = ({ id, name, value }) => {
-  window.gtag('event', name, {
-    event_category: 'Web Vitals',
+  window.gtag("event", "web_vitals", {
+    event_category: "Web Vitals",
     event_label: id,
     value: Math.round(value * 1000),
     non_interaction: true,
