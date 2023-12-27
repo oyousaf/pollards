@@ -15,7 +15,7 @@ import {
   Clients,
 } from "./components";
 
-import reportWebVitals from "./reportWebVitals";
+import { reportWebVitals } from "./reportWebVitals";
 
 const App = () => (
   <Router>
