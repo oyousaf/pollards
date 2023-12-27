@@ -2,8 +2,8 @@ import React, { useEffect, useState, lazy, Suspense } from "react";
 
 import styles from "../style";
 import { logo } from "../assets";
-
 import socialMedia from "./SocialMedia";
+
 import { FaArrowUp } from "react-icons/fa";
 
 const LazyGmap = lazy(() => import("./Gmap"));
