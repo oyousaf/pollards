@@ -1,4 +1,6 @@
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+
 import styles from "./style";
 import {
   Nav,
@@ -8,13 +10,12 @@ import {
   Info,
   Team,
   Endorsements,
-  Gallery,
   CTA,
   Footer,
   Clients,
 } from "./components";
-import { BrowserRouter as Router } from "react-router-dom";
-import { reportWebVitals } from "./reportWebVitals";
+
+import reportWebVitals from "./reportWebVitals";
 
 const App = () => (
   <Router>
