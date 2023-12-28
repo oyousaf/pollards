@@ -52,23 +52,24 @@ export const features = [
     icon: glasses,
     title: "Spectacles",
     content:
-      "We offer a comprehensive selection of glasses and frames to meet every need, accompanied by thorough fitting sessions to ensure the perfect match for your style and comfort.",
+      "Discover our diverse selection of glasses and frames, complemented by meticulous fitting sessions to ensure the perfect blend of style and comfort tailored to your preferences.",
   },
   {
     id: "feature-2",
     icon: eye,
     title: "Contact Lenses",
     content:
-      "We supply a variety of contact lenses, including disposable, extended-wear, hard, and soft lenses. Additionally, we provide specialist contact lenses tailored for different conditions such as Keratoconus, ensuring personalised solutions for all your eye care requirements.",
+      "Explore a variety of contact lenses, including disposable, extended-wear, hard, and soft options. Our collection also includes specialised lenses designed for specific conditions such as Keratoconus, providing personalised solutions for all your eye care needs.",
   },
   {
     id: "feature-3",
     icon: test,
     title: "Vision Assessments",
     content:
-      "We offer thorough sight tests, featuring advanced 3D Ocular Coherence Tomography (OCT) examinations. During this process, we capture high-resolution digital images of the inner surface of your eyes. Our comprehensive sight tests ensure a detailed and precise evaluation of your eye health, allowing us to provide the most accurate and personalised care.",
+      "Undergo comprehensive sight tests, featuring advanced 3D Ocular Coherence Tomography (OCT) examinations. This process captures high-resolution digital images of the inner surface of your eyes, ensuring a detailed evaluation of your eye health. Our aim is to deliver precise and personalised care based on the most accurate assessments.",
   },
 ];
+
 
 export const feedback = [
   {
