@@ -17,8 +17,6 @@ import {
   Clients,
 } from "./components";
 
-import { reportWebVitals } from "./reportWebVitals";
-
 const App = () => (
   <Router>
     <div className="bg-primary w-full overflow-hidden">
@@ -53,6 +51,5 @@ const App = () => (
     </div>
   </Router>
 );
-reportWebVitals();
 
 export default App;
