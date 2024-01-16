@@ -70,25 +70,61 @@ export const features = [
   },
 ];
 
-
 export const feedback = [
   {
     id: "feedback-1",
+    content: `Exceptional customer service! The welcoming atmosphere always makes me feel at home. Fizz's extensive knowledge adds immense value. Highly recommend!`,
+    name: "Omar ♔",
+    title: "Exceptional customer service",
+  },
+  {
+    id: "feedback-2",
     content: `Fantastic knowledge and care shown by Pollards Opticians. They have gone above and beyond in assisting my dry eye condition and I would highly recommend them!`,
     name: "Scott Jackson",
     title: "Fantastic knowledge",
   },
   {
-    id: "feedback-2",
+    id: "feedback-3",
+    content: `Been friends with Fizz for years. What a man he is! Fits me in around his busy schedule for an emergency. My mate and the best optician that actually cares about your eyes rather than your money. Iiiiiinside!`,
+    name: "Luke Devine",
+    title: "Iiiiiinside!",
+  },
+  {
+    id: "feedback-4",
+    content: `Always receive fantastic support and service from Fizz. As someone who suffers from Keratoconus, Fizz has been helping me for years to get my vision to a great standard. Always on hand with any issues and readily available with great advice, Fizz has restored my vision!`,
+    name: "Aamir Akudi",
+    title: "100% Treatment",
+  },
+  {
+    id: "feedback-5",
     content: `As a patient at Pollards, I can 100% guarantee the experience here is always amazing. The staff acting as friends and always putting a smile on my face. Treatment also 100%. Grateful towards the team. Thank you!`,
     name: "Zareen Imran",
     title: "100% Treatment",
   },
   {
-    id: "feedback-3",
+    id: "feedback-6",
     content: `Fantastic professional service. The team really put you at ease here. After only two visits I now have vision in my left eye after 8 years of blurred vision!`,
     name: "Mick Cleeve",
     title: "Fantastic professional service",
+  },
+  {
+    id: "feedback-7",
+    content: `Absolutely adore all the staff at Pollards. Fizz helped me when I was lost with what to do next. My Keratoconus had gotten so bad in my right eye, it had me more than extremely worried. 3 months later I was fitted with a new contact lens & passed my driving medical with flying colours. Why would I go anywhere else now? That's right - I wouldn't!`,
+    name: "Aaron Eccles",
+    title: "New contact lens",
+  },
+
+  {
+    id: "feedback-8",
+    content: `First time I have been and very happy with everything; they make you feel at home and very good at their job.`,
+    name: "Chris Peel",
+    title: "Very happy",
+  },
+  {
+    id: "feedback-9",
+    content: `Top, top people! Everybody is very friendly and are very patient and Fizz is just brilliant!`,
+    name: "Adam Winwood",
+    title: "Toppp people",
   },
 ];
 
@@ -145,7 +181,7 @@ export const team = [
     image: fizz,
     name: "Fizz",
   },
-/*{
+  /*{
   {
     id: 4,
     image: michael,
