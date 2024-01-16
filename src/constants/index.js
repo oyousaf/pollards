@@ -122,7 +122,7 @@ export const feedback = [
   },
   {
     id: "feedback-9",
-    content: `Top, top people! Everybody is very friendly and are very patient and Fizz is just brilliant!`,
+    content: `Top, top people! Everybody is very friendly and are very patient. Fizz is just brilliant!`,
     name: "Adam Winwood",
     title: "Toppp people",
   },
