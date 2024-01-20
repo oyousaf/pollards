@@ -20,10 +20,10 @@ import {
 const App = () => (
   <Router>
     <div className="bg-primary w-full overflow-hidden">
-      <Snowfall
+      {/*<Snowfall
         snowflakeCount={100}
         style={{ bottom: 0, position: "fixed", width: "100%" }}
-      />
+/>*/}
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Nav />
