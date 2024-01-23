@@ -73,7 +73,7 @@ export const features = [
 export const feedback = [
   {
     id: "feedback-1",
-    content: `Exceptional customer service! The welcoming atmosphere always makes me feel at home. Fizz's extensive knowledge adds immense value. Highly recommend!`,
+    content: `Exceptional customer service! The welcoming atmosphere always makes you feel at home. Fizz's extensive knowledge adds immense value. Highly recommend!`,
     name: "Omar ♔",
     title: "Exceptional customer service",
   },
