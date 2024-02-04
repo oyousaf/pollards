@@ -71,12 +71,12 @@ export const features = [
 ];
 
 export const feedback = [
-  {/*{
+  /*{
     id: "feedback-1",
     content: ``,
     name: "",
     title: "",
-  },*/},
+  },*/
   {
     id: "feedback-2",
     content: `Fantastic knowledge and care shown by Pollards Opticians. They have gone above and beyond in assisting my dry eye condition and I would highly recommend them!`,
