@@ -71,12 +71,12 @@ export const features = [
 ];
 
 export const feedback = [
-  {
+  {/*{
     id: "feedback-1",
-    content: `Exceptional customer service! The welcoming atmosphere always makes you feel at home. Fizz's extensive knowledge adds immense value. Highly recommend!`,
-    name: "Omar ♔",
-    title: "Exceptional customer service",
-  },
+    content: ``,
+    name: "",
+    title: "",
+  },*/},
   {
     id: "feedback-2",
     content: `Fantastic knowledge and care shown by Pollards Opticians. They have gone above and beyond in assisting my dry eye condition and I would highly recommend them!`,
