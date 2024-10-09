@@ -88,7 +88,7 @@ export const columns: ColumnDef<Appointment>[] = [
             type="schedule"
             title="Schedule Appointment"
             description="Please confirm the following details to schedule."
-          />
+            timeZone="timeZone"
           <AppointmentModal
             patientId={appointment.patient.$id}
             userId={appointment.userId}
@@ -96,6 +96,7 @@ export const columns: ColumnDef<Appointment>[] = [
             type="cancel"
             title="Cancel Appointment"
             description="Are you sure you want to cancel your appointment?"
+            timeZone="timeZone"
           />
         </div>
       );
