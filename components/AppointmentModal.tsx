@@ -22,6 +22,7 @@ export const AppointmentModal = ({
   userId,
   appointment,
   type,
+  timeZone,
 }: {
   patientId: string;
   userId: string;
@@ -29,6 +30,7 @@ export const AppointmentModal = ({
   type: "schedule" | "cancel";
   title: string;
   description: string;
+  timeZone: string;
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -56,6 +58,7 @@ export const AppointmentModal = ({
           type={type}
           appointment={appointment}
           setOpen={setOpen}
+          timeZone={timeZone}
         />
       </DialogContent>
     </Dialog>
