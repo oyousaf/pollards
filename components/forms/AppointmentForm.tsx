@@ -149,8 +149,8 @@ export const AppointmentForm = ({
               fieldType={FormFieldType.SELECT}
               control={form.control}
               name="primaryPhysician"
-              label="Doctor"
-              placeholder="Select a doctor"
+              label="Ophthalmologist"
+              placeholder="Select an ophthalmologist"
             >
               {Doctors.map((doctor, i) => (
                 <SelectItem key={doctor.name + i} value={doctor.name}>
@@ -159,7 +159,7 @@ export const AppointmentForm = ({
                       src={doctor.image}
                       width={32}
                       height={32}
-                      alt="doctor"
+                      alt="ophthalmologist"
                       className="rounded-full border border-dark-500"
                     />
                     <p>{doctor.name}</p>
@@ -185,7 +185,7 @@ export const AppointmentForm = ({
                 control={form.control}
                 name="reason"
                 label="Appointment reason"
-                placeholder="Annual montly check-up"
+                placeholder="Contact lens fitting"
                 disabled={type === "schedule"}
               />
 
