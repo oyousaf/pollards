@@ -2,7 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 import { ID, Query } from "node-appwrite";
-import { InputFile } from "node-appwrite/file";
 
 import { Appointment } from "@/types/appwrite.types";
 
