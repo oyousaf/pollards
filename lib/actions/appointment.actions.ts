@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { ID, Query } from "node-appwrite";
 
-import { Appointment } from "@/types/appwrite.types";
+import type { Appointment } from "@/types/appwrite.types";
 
 import {
   APPOINTMENT_COLLECTION_ID,
@@ -13,7 +13,7 @@ import {
 } from "../appwrite.config";
 import { formatDateTime, parseStringify } from "../utils";
 
-//  CREATE APPOINTMENT
+// CREATE APPOINTMENT
 export const createAppointment = async (
   appointment: CreateAppointmentParams
 ) => {
@@ -32,7 +32,7 @@ export const createAppointment = async (
   }
 };
 
-//  GET RECENT APPOINTMENTS
+// GET RECENT APPOINTMENTS
 export const getRecentAppointmentList = async () => {
   try {
     const appointments = await databases.listDocuments(
@@ -41,34 +41,16 @@ export const getRecentAppointmentList = async () => {
       [Query.orderDesc("$createdAt")]
     );
 
-    // const scheduledAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "scheduled");
-
-    // const pendingAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "pending");
-
-    // const cancelledAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "cancelled");
-
-    // const data = {
-    //   totalCount: appointments.total,
-    //   scheduledCount: scheduledAppointments.length,
-    //   pendingCount: pendingAppointments.length,
-    //   cancelledCount: cancelledAppointments.length,
-    //   documents: appointments.documents,
-    // };
-
     const initialCounts = {
       scheduledCount: 0,
       pendingCount: 0,
       cancelledCount: 0,
     };
 
-    const counts = (appointments.documents as Appointment[]).reduce(
-      (acc, appointment) => {
+    const counts = appointments.documents.reduce(
+      (acc, doc) => {
+        const appointment = doc as unknown as Appointment;
+
         switch (appointment.status) {
           case "scheduled":
             acc.scheduledCount++;
@@ -100,10 +82,9 @@ export const getRecentAppointmentList = async () => {
   }
 };
 
-//  SEND SMS NOTIFICATION
+// SEND SMS NOTIFICATION
 export const sendSMSNotification = async (userId: string, content: string) => {
   try {
-    // https://appwrite.io/docs/references/1.5.x/server-nodejs/messaging#createSms
     const message = await messaging.createSms(
       ID.unique(),
       content,
@@ -116,7 +97,7 @@ export const sendSMSNotification = async (userId: string, content: string) => {
   }
 };
 
-//  UPDATE APPOINTMENT
+// UPDATE APPOINTMENT
 export const updateAppointment = async ({
   appointmentId,
   userId,
@@ -125,7 +106,6 @@ export const updateAppointment = async ({
   type,
 }: UpdateAppointmentParams) => {
   try {
-    // Update appointment to scheduled -> https://appwrite.io/docs/references/cloud/server-nodejs/databases#updateDocument
     const updatedAppointment = await databases.updateDocument(
       DATABASE_ID!,
       APPOINTMENT_COLLECTION_ID!,
@@ -133,9 +113,20 @@ export const updateAppointment = async ({
       appointment
     );
 
-    if (!updatedAppointment) throw Error;
+    if (!updatedAppointment) throw Error();
 
-    const smsMessage = `Greetings from Pollards. ${type === "schedule" ? `Your appointment is confirmed for ${formatDateTime(appointment.schedule!, timeZone).dateTime} with Dr. ${appointment.primaryPhysician}` : `We regret to inform that your appointment for ${formatDateTime(appointment.schedule!, timeZone).dateTime} is cancelled. Reason:  ${appointment.cancellationReason}`}.`;
+    const smsMessage = `Greetings from Pollards. ${
+      type === "schedule"
+        ? `Your appointment is confirmed for ${formatDateTime(
+            appointment.schedule!,
+            timeZone
+          ).dateTime} with Dr. ${appointment.primaryPhysician}`
+        : `We regret to inform that your appointment for ${formatDateTime(
+            appointment.schedule!,
+            timeZone
+          ).dateTime} is cancelled. Reason: ${appointment.cancellationReason}`
+    }.`;
+
     await sendSMSNotification(userId, smsMessage);
 
     revalidatePath("/admin");
