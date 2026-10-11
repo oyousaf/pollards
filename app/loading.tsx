@@ -1,16 +1,9 @@
-import Image from "next/image";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function Loading() {
   return (
-    <div className="flex-center size-full h-screen gap-3 text-white">
-      <Image
-        src="/assets/icons/loader.svg"
-        alt="loader"
-        width={40}
-        height={3240}
-        className="animate-spin"
-      />
-      Loading...
+    <div className="grid min-h-dvh place-items-center" role="status" aria-label="Loading">
+      <Spinner className="size-6 text-brand" />
     </div>
   );
 }

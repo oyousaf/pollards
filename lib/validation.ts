@@ -1,118 +1,93 @@
 import { z } from "zod";
 
-export const UserFormValidation = z.object({
-  name: z
-    .string()
-    .min(2, "Name must be at least 2 characters")
-    .max(50, "Name must be at most 50 characters"),
-  email: z.string().email("Invalid email address"),
-  phone: z
-    .string()
-    .refine((phone) => /^\+\d{10,15}$/.test(phone), "Invalid phone number"),
-});
+import { GenderOptions } from "@/constants";
 
-export const PatientFormValidation = z.object({
-  name: z
-    .string()
-    .min(2, "Name must be at least 2 characters")
-    .max(50, "Name must be at most 50 characters"),
-  email: z.string().email("Invalid email address"),
-  phone: z
-    .string()
-    .refine((phone) => /^\+\d{10,15}$/.test(phone), "Invalid phone number"),
-  birthDate: z.coerce.date(),
-  gender: z.enum(["Male", "Female", "Other"]),
-  address: z
-    .string()
-    .min(5, "Address must be at least 5 characters")
-    .max(500, "Address must be at most 500 characters"),
-  occupation: z
-    .string()
-    .min(2, "Occupation must be at least 2 characters")
-    .max(500, "Occupation must be at most 500 characters"),
-  emergencyContactName: z
-    .string()
-    .min(2, "Contact name must be at least 2 characters")
-    .max(50, "Contact name must be at most 50 characters"),
-  emergencyContactNumber: z
-    .string()
-    .refine(
-      (emergencyContactNumber) => /^\+\d{10,15}$/.test(emergencyContactNumber),
-      "Invalid phone number"
-    ),
-  primaryPhysician: z.string().min(2, "Select at least one doctor"),
-  insuranceProvider: z
-    .string()
-    .min(2, "Insurance name must be at least 2 characters")
-    .max(50, "Insurance name must be at most 50 characters"),
-  insurancePolicyNumber: z
-    .string()
-    .min(2, "Policy number must be at least 2 characters")
-    .max(50, "Policy number must be at most 50 characters"),
-  allergies: z.string().optional(),
-  currentMedication: z.string().optional(),
-  familyMedicalHistory: z.string().optional(),
-  pastMedicalHistory: z.string().optional(),
-  identificationType: z.string().optional(),
-  identificationNumber: z.string().optional(),
-  identificationDocument: z.custom<File[]>().optional(),
-  treatmentConsent: z
-    .boolean()
-    .default(false)
-    .refine((value) => value === true, {
-      message: "You must consent to treatment in order to proceed",
-    }),
-  disclosureConsent: z
-    .boolean()
-    .default(false)
-    .refine((value) => value === true, {
-      message: "You must consent to disclosure in order to proceed",
-    }),
-  privacyConsent: z
-    .boolean()
-    .default(false)
-    .refine((value) => value === true, {
-      message: "You must consent to privacy in order to proceed",
-    }),
+// Shared by client forms (via zodResolver) and server actions (re-validation).
+
+const name = z
+  .string()
+  .trim()
+  .min(2, "Please enter at least 2 characters")
+  .max(60, "Please keep this under 60 characters");
+
+// Trim/lowercase first: z.email() validates before its own transforms run.
+const emailField = z.string().trim().toLowerCase().pipe(z.email("Enter a valid email address"));
+
+const phone = z.e164("Enter a valid phone number, including country code");
+
+export const UserSchema = z.object({
+  name,
+  email: emailField,
+  phone,
 });
+export type UserInput = z.infer<typeof UserSchema>;
+
+const consent = (message: string) => z.boolean().refine((value) => value === true, { message });
+
+export const PatientSchema = z.object({
+  name,
+  email: emailField,
+  phone,
+  birthDate: z
+    .date({ error: "Please choose your date of birth" })
+    .max(new Date(), "Date of birth can't be in the future"),
+  gender: z.enum(GenderOptions, { error: "Please choose one" }),
+  address: z.string().trim().min(5, "Please enter your full address").max(500),
+  // Kept required: these map to required columns in the existing Appwrite table.
+  occupation: z.string().trim().min(2, "Please enter your occupation").max(100),
+  emergencyContactName: name,
+  emergencyContactNumber: phone,
+  primaryPhysician: z.string().min(2, "Please choose an optometrist"),
+  insuranceProvider: z.string().trim().min(2, "Enter your provider, or NHS").max(60),
+  insurancePolicyNumber: z.string().trim().min(2, "Enter your policy or NHS number").max(60),
+  allergies: z.string().trim().max(1000).optional(),
+  currentMedication: z.string().trim().max(1000).optional(),
+  familyMedicalHistory: z.string().trim().max(1000).optional(),
+  pastMedicalHistory: z.string().trim().max(1000).optional(),
+  identificationType: z.string().optional(),
+  identificationNumber: z.string().trim().max(60).optional(),
+  treatmentConsent: consent("You must consent to treatment to continue"),
+  disclosureConsent: consent("You must consent to disclosure to continue"),
+  privacyConsent: consent("You must accept the privacy policy to continue"),
+});
+export type PatientInput = z.infer<typeof PatientSchema>;
+
+export const PatientFormSchema = PatientSchema.extend({
+  identificationDocument: z.array(z.instanceof(File)).max(1).optional(),
+});
+export type PatientFormInput = z.infer<typeof PatientFormSchema>;
 
 export const CreateAppointmentSchema = z.object({
-  primaryPhysician: z.string().min(2, "Select at least one doctor"),
-  schedule: z.coerce.date(),
+  primaryPhysician: z.string().min(2, "Please choose an optometrist"),
+  schedule: z.date({ error: "Please choose a date and time" }),
   reason: z
     .string()
-    .min(2, "Reason must be at least 2 characters")
-    .max(500, "Reason must be at most 500 characters"),
-  note: z.string().optional(),
-  cancellationReason: z.string().optional(),
+    .trim()
+    .min(2, "Tell us briefly why you're booking")
+    .max(500, "Please keep this under 500 characters"),
+  note: z.string().trim().max(500).optional(),
 });
+export type CreateAppointmentInput = z.infer<typeof CreateAppointmentSchema>;
 
 export const ScheduleAppointmentSchema = z.object({
-  primaryPhysician: z.string().min(2, "Select at least one doctor"),
-  schedule: z.coerce.date(),
-  reason: z.string().optional(),
-  note: z.string().optional(),
-  cancellationReason: z.string().optional(),
+  primaryPhysician: z.string().min(2, "Please choose an optometrist"),
+  schedule: z.date({ error: "Please choose a date and time" }),
 });
+export type ScheduleAppointmentInput = z.infer<typeof ScheduleAppointmentSchema>;
 
 export const CancelAppointmentSchema = z.object({
-  primaryPhysician: z.string().min(2, "Select at least one doctor"),
-  schedule: z.coerce.date(),
-  reason: z.string().optional(),
-  note: z.string().optional(),
   cancellationReason: z
     .string()
-    .min(2, "Reason must be at least 2 characters")
-    .max(500, "Reason must be at most 500 characters"),
+    .trim()
+    .min(2, "Please give a short reason")
+    .max(500, "Please keep this under 500 characters"),
+});
+export type CancelAppointmentInput = z.infer<typeof CancelAppointmentSchema>;
+
+export const PasskeySchema = z.object({
+  passkey: z.string().regex(/^\d{4}$/, "Enter the 4-digit passcode"),
 });
 
-export function getAppointmentSchema(type: string) {
-  switch (type) {
-    case "create":
-      return CreateAppointmentSchema;
-    case "cancel":
-      return CancelAppointmentSchema;
-    default:
-      return ScheduleAppointmentSchema;
-  }
-}
+export const OtpSchema = z.object({
+  code: z.string().regex(/^\d{6}$/, "Enter the 6-digit code from your email"),
+});

@@ -1,45 +1,30 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 
-import { AppointmentForm } from "@/components/forms/AppointmentForm";
-import { getPatient } from "@/lib/actions/patient.actions";
+import { AppointmentForm } from "@/components/forms/appointment-form";
+import { PageIntro, PatientShell } from "@/components/patient-shell";
+import { findPatient, getBookedSlots } from "@/lib/data";
+import { requirePatient } from "@/lib/session";
 
-const Appointment = async ({ params: { userId } }: SearchParamProps) => {
-  const patient = await getPatient(userId);
+export const metadata: Metadata = { title: "Book an appointment", robots: { index: false } };
+
+export default async function NewAppointmentPage({
+  params,
+}: PageProps<"/patients/[userId]/new-appointment">) {
+  const { userId } = await params;
+  await requirePatient(userId);
+
+  const [patient, booked] = await Promise.all([findPatient(userId), getBookedSlots()]);
+  if (!patient) redirect(`/patients/${userId}/register`);
 
   return (
-    <div className="flex h-screen max-h-screen">
-      <section className="remove-scrollbar container my-auto">
-        <div className="sub-container max-w-[860px] flex-1 justify-between">
-          <Image
-            src="/assets/icons/logo-full.png"
-            height={1000}
-            width={1000}
-            alt="logo"
-            className="mb-12 h-10 w-fit"
-          />
-
-          <AppointmentForm
-            patientId={patient?.$id}
-            userId={userId}
-            type="create"
-            timeZone={patient.timeZone}
-          />
-
-          <p className="copyright mt-10 py-12">
-            © {new Date().getFullYear()} Pollards
-          </p>
-        </div>
-      </section>
-
-      <Image
-        src="/assets/images/appointment-img.png"
-        height={1500}
-        width={1500}
-        alt="appointment"
-        className="side-img max-w-[390px] bg-bottom"
+    <PatientShell width="lg">
+      <PageIntro
+        eyebrow="Book an appointment"
+        title={<>Hi {patient.name.split(" ")[0]}, when suits you?</>}
+        description="Pick your optometrist and a time. We'll text you as soon as it's confirmed."
       />
-    </div>
+      <AppointmentForm defaultPhysician={patient.primaryPhysician} booked={booked} />
+    </PatientShell>
   );
-};
-
-export default Appointment;
+}

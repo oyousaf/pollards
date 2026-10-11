@@ -1,350 +1,213 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-/* ========================================== TAILWIND STYLES */
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist);
+  --font-heading: var(--font-display);
+  --font-display: var(--font-instrument);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand + semantic status colours */
+  --color-brand: var(--brand);
+  --color-teal: var(--teal);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --animate-fade-up: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-pop: pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Pollards purple as primary, practice teal as secondary accent.
+   Primary #aa47cd is the lightest brand purple that keeps white text at WCAG AA (4.68:1).
+   --brand is for purple *text*: equal to primary in light mode, lifted in dark mode for contrast. */
+:root {
+  --radius: 0.75rem;
+
+  --background: oklch(0.985 0.004 320);
+  --foreground: oklch(0.21 0.02 305);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.02 305);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.02 305);
+  --primary: oklch(0.585 0.21 316);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.955 0.012 318);
+  --secondary-foreground: oklch(0.3 0.06 318);
+  --muted: oklch(0.962 0.006 318);
+  --muted-foreground: oklch(0.5 0.02 305);
+  --accent: oklch(0.95 0.035 205);
+  --accent-foreground: oklch(0.34 0.07 210);
+  --destructive: oklch(0.58 0.22 25);
+  --border: oklch(0.915 0.01 318);
+  --input: oklch(0.89 0.012 318);
+  --ring: oklch(0.585 0.21 316 / 60%);
+
+  --brand: oklch(0.54 0.2 316);
+  --teal: oklch(0.62 0.11 205);
+  --success: oklch(0.52 0.13 160);
+  --success-soft: oklch(0.95 0.04 160);
+  --warning: oklch(0.6 0.14 70);
+  --warning-soft: oklch(0.96 0.05 85);
+  --danger: oklch(0.56 0.2 22);
+  --danger-soft: oklch(0.95 0.03 22);
+
+  --chart-1: var(--primary);
+  --chart-2: var(--teal);
+  --chart-3: var(--success);
+  --chart-4: var(--warning);
+  --chart-5: var(--danger);
+}
+
+.dark {
+  --background: oklch(0.155 0.014 300);
+  --foreground: oklch(0.96 0.006 318);
+  --card: oklch(0.195 0.016 300);
+  --card-foreground: oklch(0.96 0.006 318);
+  --popover: oklch(0.21 0.018 300);
+  --popover-foreground: oklch(0.96 0.006 318);
+  --primary: oklch(0.585 0.21 316);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.26 0.03 310);
+  --secondary-foreground: oklch(0.92 0.02 318);
+  --muted: oklch(0.24 0.016 300);
+  --muted-foreground: oklch(0.7 0.018 305);
+  --accent: oklch(0.28 0.045 210);
+  --accent-foreground: oklch(0.88 0.06 200);
+  --destructive: oklch(0.7 0.19 22);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.7 0.17 316 / 55%);
+
+  --brand: oklch(0.76 0.14 316);
+  --teal: oklch(0.76 0.1 200);
+  --success: oklch(0.78 0.14 160);
+  --success-soft: oklch(0.3 0.06 160);
+  --warning: oklch(0.82 0.13 80);
+  --warning-soft: oklch(0.32 0.06 75);
+  --danger: oklch(0.74 0.16 22);
+  --danger-soft: oklch(0.3 0.07 22);
+}
+
 @layer base {
-  /* Remove scrollbar */
-  .remove-scrollbar::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
-    border-radius: 0px;
+  * {
+    @apply border-border outline-ring/50;
   }
-
-  .remove-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
+  html {
+    @apply font-sans;
+    -webkit-tap-highlight-color: transparent;
   }
-
-  .remove-scrollbar::-webkit-scrollbar-thumb {
-    background: transparent;
-    border-radius: 0px;
+  body {
+    @apply min-h-dvh bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "cv11";
   }
-
-  .remove-scrollbar::-webkit-scrollbar-thumb:hover {
-    /* background: #1e2238; */
-    background: transparent;
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply text-balance;
+  }
+  ::selection {
+    @apply bg-primary/20;
   }
 }
 
 @layer utilities {
-  /* ===== UTILITIES */
-  .sidebar {
-    @apply remove-scrollbar w-full max-w-72 flex-col overflow-auto bg-black-800 px-7 py-10;
-  }
-
-  .left-sidebar {
-    @apply hidden lg:flex;
-  }
-
-  .right-sidebar {
-    @apply hidden xl:flex;
-  }
-
-  .clip-text {
-    @apply bg-clip-text text-transparent;
-  }
-
-  .bg-image {
-    @apply bg-black-900 bg-light-rays bg-cover bg-no-repeat;
-  }
-
-  .header {
-    @apply text-32-bold md:text-36-bold;
-  }
-
-  .sub-header {
-    @apply text-18-bold md:text-24-bold;
-  }
-
-  .container {
-    @apply relative flex-1 overflow-y-auto px-[5%];
-  }
-
-  .sub-container {
-    @apply mx-auto flex size-full flex-col py-10;
-  }
-
-  .side-img {
-    @apply hidden h-full object-cover md:block;
-  }
-
-  .copyright {
-    @apply text-14-regular justify-items-end text-center text-dark-600 xl:text-left;
-  }
-
-  /* ==== SUCCESS */
-  .success-img {
-    @apply m-auto flex flex-1 flex-col items-center justify-between gap-10 py-10;
-  }
-
-  .request-details {
-    @apply flex w-full flex-col items-center gap-8 border-y-2 border-dark-400 py-8 md:w-fit md:flex-row;
-  }
-
-  /* ===== ADMIN */
-  .admin-header {
-    @apply sticky top-3 z-20 mx-3 flex items-center justify-between rounded-2xl bg-dark-200 px-[5%] py-5 shadow-lg xl:px-12;
-  }
-
-  .admin-main {
-    @apply flex flex-col items-center space-y-6 px-[5%] pb-12 xl:space-y-12 xl:px-12;
-  }
-
-  .admin-stat {
-    @apply flex w-full flex-col justify-between gap-5 sm:flex-row xl:gap-10;
-  }
-
-  /* ==== FORM */
-  .radio-group {
-    @apply flex h-full flex-1 items-center gap-2 rounded-md border border-dashed border-dark-500 bg-dark-400 p-3;
-  }
-
-  .checkbox-label {
-    @apply cursor-pointer text-sm font-medium text-dark-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70 md:leading-none;
-  }
-
-  /* ==== File Upload */
-  .file-upload {
-    @apply text-12-regular flex cursor-pointer  flex-col items-center justify-center gap-3 rounded-md border border-dashed border-dark-500 bg-dark-400 p-5;
-  }
-
-  .file-upload_label {
-    @apply flex flex-col justify-center gap-2 text-center text-dark-600;
-  }
-
-  /* ==== Stat Card */
-  .stat-card {
-    @apply flex flex-1 flex-col gap-6 rounded-2xl bg-cover p-6 shadow-lg;
-  }
-
-  /* ==== Status Badge */
-  .status-badge {
-    @apply flex w-fit items-center gap-2 rounded-full px-4 py-2;
-  }
-
-  /* Data Table */
-  .data-table {
-    @apply z-10 w-full overflow-hidden rounded-lg border border-dark-400 shadow-lg;
-  }
-
-  .table-actions {
-    @apply flex w-full items-center justify-between space-x-2 p-4;
-  }
-
-  /* ===== ALIGNMENTS */
-  .flex-center {
-    @apply flex items-center justify-center;
-  }
-
-  .flex-between {
-    @apply flex items-center justify-between;
-  }
-
-  /* ===== TYPOGRAPHY */
-  .text-36-bold {
-    @apply text-[36px] leading-[40px] font-bold;
-  }
-
-  .text-24-bold {
-    @apply text-[24px] leading-[28px] font-bold;
-  }
-
-  .text-32-bold {
-    @apply text-[32px] leading-[36px] font-bold;
-  }
-
-  .text-18-bold {
-    @apply text-[18px] leading-[24px] font-bold;
-  }
-
-  .text-16-semibold {
-    @apply text-[16px] leading-[20px] font-semibold;
-  }
-
-  .text-16-regular {
-    @apply text-[16px] leading-[20px] font-normal;
-  }
-
-  .text-14-medium {
-    @apply text-[14px] leading-[18px] font-medium;
-  }
-
-  .text-14-regular {
-    @apply text-[14px] leading-[18px] font-normal;
-  }
-
-  .text-12-regular {
-    @apply text-[12px] leading-[16px] font-normal;
-  }
-
-  .text-12-semibold {
-    @apply text-[12px] leading-[16px] font-semibold;
-  }
-
-  /* =====  SHADCN OVERRIDES */
-  .shad-primary-btn {
-    @apply bg-green-500 text-white !important;
-  }
-
-  .shad-danger-btn {
-    @apply bg-red-700 text-white !important;
-  }
-
-  .shad-gray-btn {
-    @apply border border-dark-500 cursor-pointer bg-dark-400 text-white !important;
-  }
-
-  .shad-input-label {
-    @apply text-14-medium text-dark-700 !important;
-  }
-
-  .shad-input {
-    @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
-  }
-
-  .shad-input-icon {
-    @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
-  }
-
-  .shad-textArea {
-    @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
-  }
-
-  .shad-combobox-item {
-    @apply data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 !important;
-  }
-
-  .shad-combobox-trigger {
-    @apply h-11 !important;
-  }
-
-  .shad-select-trigger {
-    @apply bg-dark-400  placeholder:text-dark-600 border-dark-500 h-11 focus:ring-0 focus:ring-offset-0 !important;
-  }
-
-  .shad-select-content {
-    @apply bg-dark-400 border-dark-500 !important;
-  }
-
-  .shad-dialog {
-    @apply bg-dark-400 border-dark-500 !important;
-  }
-
-  .shad-dialog button {
-    @apply focus:ring-0 focus:ring-offset-0 focus-visible:border-none focus-visible:outline-none focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
-  }
-
-  .shad-error {
-    @apply text-red-400 !important;
-  }
-
-  .shad-table {
-    @apply rounded-lg overflow-hidden !important;
-  }
-
-  .shad-table-row-header {
-    @apply border-b border-dark-400 text-light-200 hover:bg-transparent !important;
-  }
-
-  .shad-table-row {
-    @apply border-b border-dark-400 text-light-200 !important;
-  }
-
-  .shad-otp {
-    @apply w-full flex justify-between !important;
-  }
-
-  .shad-otp-slot {
-    @apply text-36-bold justify-center flex border border-dark-500 rounded-lg size-16 gap-4 !important;
-  }
-
-  .shad-alert-dialog {
-    @apply space-y-5 bg-dark-400 border-dark-500 outline-none !important;
-  }
-
-  .shad-sheet-content button {
-    @apply top-2 focus:ring-0 focus:ring-offset-0 focus-visible:border-none focus-visible:outline-none focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
-  }
-
-  /* =====  REACT PHONE NUMBER INPUT OVERRIDES */
-  .input-phone {
-    @apply mt-2 h-11 rounded-md px-3 text-sm border bg-dark-400 placeholder:text-dark-600 border-dark-500 !important;
-  }
-
-  /* =====  REACT DATE PICKER OVERRIDES */
-  .date-picker {
-    @apply overflow-hidden border-transparent w-full placeholder:text-dark-600  h-11 text-14-medium rounded-md px-3 outline-none !important;
+  /* Soft ambient brand glow used behind hero content. */
+  .bg-aurora {
+    background:
+      radial-gradient(60% 50% at 0% 0%, oklch(from var(--brand) l c h / 12%), transparent 70%),
+      radial-gradient(50% 40% at 100% 100%, oklch(from var(--teal) l c h / 10%), transparent 70%);
   }
 }
 
-/* =====  REACT-DATEPICKER OVERRIDES */
-.react-datepicker-wrapper.date-picker {
-  display: flex;
-  align-items: center;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-.react-datepicker,
-.react-datepicker__time,
-.react-datepicker__header,
-.react-datepicker__current-month,
-.react-datepicker__day-name,
-.react-datepicker__day,
-.react-datepicker-time__header {
-  background-color: #1a1d21 !important;
-  border-color: #363a3d !important;
-  color: #abb8c4 !important;
+/* react-phone-number-input: blend with shadcn inputs */
+.PhoneInput {
+  @apply flex h-11 w-full items-center gap-2 rounded-lg border border-input bg-transparent px-3 transition-colors dark:bg-input/30;
 }
-
-.react-datepicker__current-month,
-.react-datepicker__day-name,
-.react-datepicker-time__header {
-  color: #ffffff !important;
+.PhoneInput:has(input:focus-visible) {
+  @apply border-ring ring-3 ring-ring/50;
 }
-
-.react-datepicker__triangle {
-  fill: #1a1d21 !important;
-  color: #1a1d21 !important;
-  stroke: #1a1d21 !important;
+.PhoneInput:has([aria-invalid="true"]) {
+  @apply border-destructive ring-3 ring-destructive/20;
 }
-
-.react-datepicker__time-list-item:hover {
-  background-color: #363a3d !important;
-}
-
-.react-datepicker__input-container input {
-  background-color: #1a1d21 !important;
-  width: 100%;
-  outline: none;
-}
-
-.react-datepicker__day--selected {
-  background-color: #24ae7c !important;
-  color: #ffffff !important;
-  border-radius: 4px;
-}
-
-.react-datepicker__time-list-item--selected {
-  background-color: #24ae7c !important;
-}
-
-.react-datepicker__time-container {
-  border-left: 1px solid #363a3d !important;
-}
-
-.react-datepicker__time-list-item {
-  display: flex !important;
-  align-items: center !important;
-}
-
-/* =====  REACT PHONE NUMBER INPUT OVERRIDES */
 .PhoneInputInput {
-  outline: none;
-  margin-left: 4px;
-  background: #1a1d21;
-  font-size: 14px;
-  font-weight: 500;
+  @apply h-full min-w-0 flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground md:text-sm;
 }
-
-.PhoneInputInput::placeholder {
-  color: #1a1d21;
+.PhoneInputCountrySelect {
+  @apply bg-popover text-popover-foreground;
 }

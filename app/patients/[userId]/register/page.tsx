@@ -1,44 +1,29 @@
-import Image from "next/image";
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
-import RegisterForm from "@/components/forms/RegisterForm";
-import { getPatient, getUser } from "@/lib/actions/patient.actions";
+import { RegisterForm } from "@/components/forms/register-form";
+import { PageIntro, PatientShell } from "@/components/patient-shell";
+import { findPatient, getUser } from "@/lib/data";
+import { requirePatient } from "@/lib/session";
 
-const Register = async ({ params: { userId } }: SearchParamProps) => {
-  const user = await getUser(userId);
-  const patient = await getPatient(userId);
+export const metadata: Metadata = { title: "Register", robots: { index: false } };
 
+export default async function RegisterPage({ params }: PageProps<"/patients/[userId]/register">) {
+  const { userId } = await params;
+  await requirePatient(userId);
+
+  const [user, patient] = await Promise.all([getUser(userId), findPatient(userId)]);
+  if (!user) redirect("/");
   if (patient) redirect(`/patients/${userId}/new-appointment`);
 
   return (
-    <div className="flex h-screen max-h-screen">
-      <section className="remove-scrollbar container">
-        <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
-          <Image
-            src="/assets/icons/logo-full.png"
-            height={1000}
-            width={1000}
-            alt="patient"
-            className="mb-12 h-10 w-fit"
-          />
-
-          <RegisterForm user={user} />
-
-          <p className="copyright py-12">
-            © {new Date().getFullYear()} Pollards
-          </p>
-        </div>
-      </section>
-
-      <Image
-        src="/assets/images/register-img.png"
-        height={1000}
-        width={1000}
-        alt="patient"
-        className="side-img max-w-[390px]"
+    <PatientShell width="lg">
+      <PageIntro
+        eyebrow="New patient"
+        title={<>Welcome, {user.name.split(" ")[0]} 👋</>}
+        description="A few details so we can look after your eyes properly. It takes about two minutes."
       />
-    </div>
+      <RegisterForm user={user} />
+    </PatientShell>
   );
-};
-
-export default Register;
+}

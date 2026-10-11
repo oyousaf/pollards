@@ -1,48 +1,45 @@
-import Image from "next/image";
+import { CalendarCheckIcon, Clock3Icon, MessageSquareTextIcon } from "lucide-react";
 import Link from "next/link";
 
-import { PatientForm } from "@/components/forms/PatientForm";
-import { PasskeyModal } from "@/components/PasskeyModal";
+import { PatientForm } from "@/components/forms/patient-form";
+import { PageIntro, PatientShell } from "@/components/patient-shell";
 
-const Home = ({ searchParams }: SearchParamProps) => {
-  const isAdmin = searchParams?.admin === "true";
+const perks = [
+  { icon: Clock3Icon, label: "Book in under a minute" },
+  { icon: CalendarCheckIcon, label: "Choose your optometrist" },
+  { icon: MessageSquareTextIcon, label: "SMS confirmation" },
+];
 
+export default function Home() {
   return (
-    <div className="flex h-screen max-h-screen">
-      {isAdmin && <PasskeyModal />}
-
-      <section className="remove-scrollbar container my-auto">
-        <div className="sub-container max-w-[496px]">
-          <Image
-            src="/assets/icons/logo-full.png"
-            height={1000}
-            width={1000}
-            alt="patient"
-            className="mb-12 h-10 w-fit"
-          />
-
-          <PatientForm />
-
-          <div className="text-14-regular mt-20 flex justify-between">
-            <p className="justify-items-end text-dark-600 xl:text-left">
-              © {new Date().getFullYear()} Pollards
-            </p>
-            <Link href="/?admin=true" className="text-green-500">
-              Admin
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <Image
-        src="/assets/images/onboarding-img.webp"
-        height={1000}
-        width={1000}
-        alt="patient"
-        className="side-img max-w-[50%]"
+    <PatientShell
+      footer={
+        <Link href="/admin" className="underline-offset-4 hover:text-foreground hover:underline">
+          Staff login
+        </Link>
+      }
+    >
+      <PageIntro
+        title={
+          <>
+            Visionaries see <em className="text-brand">beyond</em> the boundaries of eyesight.
+          </>
+        }
+        description="Eye examinations, contact lens fittings and specialist keratoconus care. Tell us who you are and we'll get you booked in."
       />
-    </div>
-  );
-};
 
-export default Home;
+      <PatientForm />
+
+      <ul className="mt-8 grid animate-fade-up gap-3 text-sm text-muted-foreground [animation-delay:160ms] sm:grid-cols-3">
+        {perks.map(({ icon: Icon, label }) => (
+          <li key={label} className="flex items-center gap-2">
+            <span className="grid size-8 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground">
+              <Icon className="size-4" aria-hidden />
+            </span>
+            {label}
+          </li>
+        ))}
+      </ul>
+    </PatientShell>
+  );
+}
