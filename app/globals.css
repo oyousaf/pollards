@@ -78,8 +78,8 @@
   }
 }
 
-/* Pollards purple as primary, practice teal as secondary accent.
-   Primary #aa47cd is the lightest brand purple that keeps white text at WCAG AA (4.68:1).
+/* Pollards purple (#9F34B5) as primary, practice teal as secondary accent.
+   Dark mode sits on a deep violet background rather than near-black.
    --brand is for purple *text*: equal to primary in light mode, lifted in dark mode for contrast. */
 :root {
   --radius: 0.75rem;
@@ -90,8 +90,8 @@
   --card-foreground: oklch(0.21 0.02 305);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.21 0.02 305);
-  --primary: oklch(0.585 0.21 316);
-  --primary-foreground: oklch(1 0 0);
+  --primary: oklch(0.53 0.19 318);
+  --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.955 0.012 318);
   --secondary-foreground: oklch(0.3 0.06 318);
   --muted: oklch(0.962 0.006 318);
@@ -101,9 +101,9 @@
   --destructive: oklch(0.58 0.22 25);
   --border: oklch(0.915 0.01 318);
   --input: oklch(0.89 0.012 318);
-  --ring: oklch(0.585 0.21 316 / 60%);
+  --ring: oklch(0.53 0.19 318 / 60%);
 
-  --brand: oklch(0.54 0.2 316);
+  --brand: oklch(0.53 0.19 318);
   --teal: oklch(0.62 0.11 205);
   --success: oklch(0.52 0.13 160);
   --success-soft: oklch(0.95 0.04 160);
@@ -120,26 +120,26 @@
 }
 
 .dark {
-  --background: oklch(0.155 0.014 300);
-  --foreground: oklch(0.96 0.006 318);
-  --card: oklch(0.195 0.016 300);
-  --card-foreground: oklch(0.96 0.006 318);
-  --popover: oklch(0.21 0.018 300);
-  --popover-foreground: oklch(0.96 0.006 318);
-  --primary: oklch(0.585 0.21 316);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.26 0.03 310);
-  --secondary-foreground: oklch(0.92 0.02 318);
-  --muted: oklch(0.24 0.016 300);
-  --muted-foreground: oklch(0.7 0.018 305);
-  --accent: oklch(0.28 0.045 210);
+  --background: oklch(0.205 0.075 303);
+  --foreground: oklch(0.97 0.01 310);
+  --card: oklch(0.245 0.08 303);
+  --card-foreground: oklch(0.97 0.01 310);
+  --popover: oklch(0.265 0.08 303);
+  --popover-foreground: oklch(0.97 0.01 310);
+  --primary: oklch(0.72 0.16 318);
+  --primary-foreground: oklch(0.17 0.03 310);
+  --secondary: oklch(0.3 0.07 305);
+  --secondary-foreground: oklch(0.93 0.02 318);
+  --muted: oklch(0.28 0.06 303);
+  --muted-foreground: oklch(0.78 0.04 305);
+  --accent: oklch(0.3 0.05 210);
   --accent-foreground: oklch(0.88 0.06 200);
   --destructive: oklch(0.7 0.19 22);
-  --border: oklch(1 0 0 / 9%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.7 0.17 316 / 55%);
+  --border: oklch(1 0 0 / 11%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.72 0.16 318 / 55%);
 
-  --brand: oklch(0.76 0.14 316);
+  --brand: oklch(0.78 0.14 318);
   --teal: oklch(0.76 0.1 200);
   --success: oklch(0.78 0.14 160);
   --success-soft: oklch(0.3 0.06 160);
