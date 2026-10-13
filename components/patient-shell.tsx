@@ -12,8 +12,9 @@ const HERO_IMAGE = {
 };
 
 /**
- * Split layout for the patient journey: form column + sticky photo panel.
- * The photo panel collapses away on small screens so the form stays first.
+ * Split layout for the patient journey: form column + sticky photo panel, held together
+ * in one centred max-w-7xl frame so wide screens get a single composed block rather than
+ * pieces pinned to opposite edges. The photo collapses away below `lg`.
  */
 export function PatientShell({
   children,
@@ -25,41 +26,43 @@ export function PatientShell({
   width?: "md" | "lg";
 }) {
   return (
-    <div className="bg-aurora flex min-h-dvh">
-      <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex items-center justify-between px-5 py-5 sm:px-10">
-          <Logo />
-          <ThemeToggle />
-        </header>
+    <div className="bg-aurora min-h-dvh">
+      <div className="mx-auto flex min-h-dvh w-full max-w-7xl">
+        <div className="flex min-w-0 flex-1 flex-col px-5 sm:px-10">
+          <header className="flex items-center justify-between py-5">
+            <Logo />
+            <ThemeToggle />
+          </header>
 
-        <main
-          id="main"
-          className={cn(
-            "mx-auto flex w-full flex-1 flex-col justify-center px-5 pb-10 sm:px-10",
-            width === "md" ? "max-w-xl" : "max-w-3xl"
-          )}
-        >
-          {children}
-        </main>
+          <main
+            id="main"
+            className={cn(
+              "mx-auto flex w-full flex-1 flex-col justify-center pb-10",
+              width === "md" ? "max-w-xl" : "max-w-3xl"
+            )}
+          >
+            {children}
+          </main>
 
-        <footer className="flex flex-wrap items-center justify-between gap-3 px-5 py-6 text-sm text-muted-foreground sm:px-10">
-          <p>© {new Date().getFullYear()} Pollards</p>
-          {footer}
-        </footer>
-      </div>
-
-      <aside className="sticky top-0 hidden h-dvh w-[42%] max-w-[640px] p-3 lg:block">
-        <div className="relative size-full overflow-hidden rounded-3xl">
-          <Image
-            src={HERO_IMAGE.src}
-            alt={HERO_IMAGE.alt}
-            fill
-            priority
-            sizes="(min-width: 1024px) 42vw, 0px"
-            className="object-cover"
-          />
+          <footer className="flex flex-wrap items-center justify-between gap-3 py-6 text-sm text-muted-foreground">
+            <p>© {new Date().getFullYear()} Pollards</p>
+            {footer}
+          </footer>
         </div>
-      </aside>
+
+        <aside className="sticky top-0 hidden h-dvh w-[45%] shrink-0 py-4 pr-4 lg:block">
+          <div className="relative size-full overflow-hidden rounded-3xl">
+            <Image
+              src={HERO_IMAGE.src}
+              alt={HERO_IMAGE.alt}
+              fill
+              priority
+              sizes="(min-width: 1280px) 576px, (min-width: 1024px) 45vw, 0px"
+              className="object-cover"
+            />
+          </div>
+        </aside>
+      </div>
     </div>
   );
 }

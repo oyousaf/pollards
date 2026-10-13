@@ -36,7 +36,7 @@ export function Analytics() {
     <div
       role="dialog"
       aria-label="Cookie preferences"
-      className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-lg animate-fade-up rounded-2xl border bg-popover/95 p-4 text-sm shadow-xl backdrop-blur sm:p-5"
+      className="fixed inset-x-3 bottom-3 z-50 animate-fade-up rounded-2xl border bg-popover/95 p-4 text-sm shadow-xl backdrop-blur sm:inset-x-auto sm:right-4 sm:bottom-4 sm:max-w-sm sm:p-5"
     >
       <p className="text-popover-foreground">
         We&apos;d like to use analytics cookies to understand how our booking site is used. No
