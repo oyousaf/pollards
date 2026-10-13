@@ -49,7 +49,6 @@ export const PatientSchema = z.object({
   disclosureConsent: consent("You must consent to disclosure to continue"),
   privacyConsent: consent("You must accept the privacy policy to continue"),
 });
-export type PatientInput = z.infer<typeof PatientSchema>;
 
 export const PatientFormSchema = PatientSchema.extend({
   identificationDocument: z.array(z.instanceof(File)).max(1).optional(),

@@ -37,17 +37,6 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
-  async redirects() {
-    return [
-      // Legacy admin entry point.
-      {
-        source: "/",
-        has: [{ type: "query", key: "admin", value: "true" }],
-        destination: "/admin/login",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 export default nextConfig;

@@ -23,15 +23,15 @@ function icsHref(start: Date, physician: string) {
   const ics = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Pollards Opticians//Booking//EN",
+    "PRODID:-//Pollards//Booking//EN",
     "BEGIN:VEVENT",
     `UID:${stamp(start)}-${physician.replace(/\W/g, "")}@pollards.vercel.app`,
     `DTSTAMP:${stamp(new Date())}`,
     `DTSTART:${stamp(start)}`,
     `DTEND:${stamp(end)}`,
-    `SUMMARY:Eye appointment (awaiting confirmation) – Pollards Opticians`,
+    `SUMMARY:Eye appointment (awaiting confirmation) – Pollards`,
     `DESCRIPTION:With ${physician}. We'll be in touch to confirm.`,
-    "LOCATION:Pollards Opticians\, Wakefield",
+    "LOCATION:Pollards\, Wakefield",
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");

@@ -1,7 +1,6 @@
-import type { GenderOptions, STATUSES } from "@/constants";
+import type { STATUSES } from "@/constants";
 
 export type Status = (typeof STATUSES)[number];
-export type Gender = (typeof GenderOptions)[number];
 
 export type ActionResult<T = undefined> =
   | ({ ok: true } & (T extends undefined ? { data?: undefined } : { data: T }))

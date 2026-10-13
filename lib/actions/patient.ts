@@ -39,7 +39,7 @@ async function emailCode(email: string) {
   await sendEmail({
     to: email,
     subject: `${code} is your Pollards sign-in code`,
-    text: `Your Pollards Opticians sign-in code is ${code}\n\nIt expires in ${CODE_TTL_MINUTES} minutes. If you didn't ask for it, you can ignore this email.`,
+    text: `Your Pollards sign-in code is ${code}\n\nIt expires in ${CODE_TTL_MINUTES} minutes. If you didn't ask for it, you can ignore this email.`,
   });
 }
 

@@ -12,7 +12,7 @@ test.describe("landing page", () => {
     await expect(
       page.getByText(`© ${new Date().getFullYear()} Pollards`, { exact: true })
     ).toBeVisible();
-    await expect(page.getByText("Pollards Opticians, Wakefield")).toHaveCount(0);
+    await expect(page.getByText(/opticians/i)).toHaveCount(0); // the brand is just "Pollards"
   });
 
   test("validates details before sending a code", async ({ page }) => {

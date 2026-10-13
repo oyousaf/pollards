@@ -2,9 +2,9 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Pollards Opticians",
+    name: "Pollards",
     short_name: "Pollards",
-    description: "Book an eye appointment with Pollards Opticians, Wakefield.",
+    description: "Book an eye appointment with Pollards, Wakefield.",
     start_url: "/",
     display: "standalone",
     background_color: "#fbf9fc",

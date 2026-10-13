@@ -7,7 +7,7 @@ export function Logo({ className, href = "/" }: { className?: string; href?: "/"
   return (
     <Link
       href={href}
-      aria-label="Pollards Opticians — home"
+      aria-label="Pollards — home"
       className={cn(
         "inline-flex rounded-md focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
         className

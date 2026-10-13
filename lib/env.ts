@@ -19,7 +19,7 @@ const schema = z
 
     // Email (sign-in codes + appointment updates). Resend in production.
     RESEND_API_KEY: optional,
-    EMAIL_FROM: z.string().default("Pollards Opticians <pollards@legxcysol.dev>"),
+    EMAIL_FROM: z.string().default("Pollards <pollards@legxcysol.dev>"),
     // Dev/test only: write outgoing email/SMS as JSON files here instead of sending.
     MAIL_OUTBOX_DIR: optional,
 
@@ -50,9 +50,7 @@ export function env(): Env {
 
   const parsed = schema.safeParse(process.env);
   if (!parsed.success) {
-    throw new Error(
-      `Invalid server environment:\n${z.prettifyError(parsed.error)}\nSee .env.example.`
-    );
+    throw new Error(`Invalid server environment:\n${z.prettifyError(parsed.error)}`);
   }
 
   cached = parsed.data;

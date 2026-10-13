@@ -343,7 +343,7 @@ export function RegisterForm({ user }: { user: PublicUser }) {
                 <CheckboxField
                   control={form.control}
                   name="treatmentConsent"
-                  label="I consent to receive eye care and treatment from Pollards Opticians."
+                  label="I consent to receive eye care and treatment from Pollards."
                 />
                 <CheckboxField
                   control={form.control}

@@ -40,7 +40,7 @@ export async function sendEmail({ to, subject, text }: Email) {
 }
 
 /** Sends an SMS via Twilio's REST API. Returns false when SMS isn't configured. */
-export async function sendSms(to: string, body: string) {
+async function sendSms(to: string, body: string) {
   const e = env();
   if (!smsEnabled()) {
     if (e.MAIL_OUTBOX_DIR) await writeOutbox("sms", { to, body });
@@ -77,9 +77,9 @@ export async function notifyPatient(
     sendEmail({
       to: patient.email,
       subject,
-      text: `Hi ${firstName},\n\n${message}\n\nPollards Opticians`,
+      text: `Hi ${firstName},\n\n${message}\n\nPollards`,
     }),
-    sendSms(patient.phone, `Pollards Opticians: ${message}`),
+    sendSms(patient.phone, `Pollards: ${message}`),
   ]);
   for (const r of results) if (r.status === "rejected") console.error("notifyPatient:", r.reason);
   return results[0].status === "fulfilled";

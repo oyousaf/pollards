@@ -1,6 +1,6 @@
-# Pollards Opticians
+# Pollards
 
-Online booking for Pollards Opticians, an independent optician in Wakefield. Patients book
+Online booking for Pollards, an independent eye-care practice in Wakefield. Patients book
 eye examinations, contact lens fittings and keratoconus reviews in under a minute; staff
 confirm, reschedule or cancel them from a live dashboard.
 

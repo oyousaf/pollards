@@ -4,7 +4,6 @@ import { ThemeProvider } from "next-themes";
 
 import { Analytics } from "@/components/analytics";
 import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 import "./globals.css";
@@ -22,25 +21,18 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pollards.vercel.app
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Pollards Opticians — Book an eye appointment in Wakefield",
-    template: "%s · Pollards Opticians",
+    default: "Pollards — Book an eye appointment in Wakefield",
+    template: "%s · Pollards",
   },
   description:
-    "Book an eye examination, contact lens fitting or keratoconus review with Pollards Opticians in Wakefield. Quick online booking with email confirmation.",
-  keywords: [
-    "Pollards Opticians",
-    "Opticians Wakefield",
-    "Eye test Wakefield",
-    "Keratoconus",
-    "Contact lens fitting",
-    "Eye care",
-  ],
-  authors: [{ name: "Pollards Opticians" }],
+    "Book an eye examination, contact lens fitting or keratoconus review with Pollards in Wakefield. Quick online booking with email confirmation.",
+  keywords: ["Pollards", "Eye test Wakefield", "Keratoconus", "Contact lens fitting", "Eye care"],
+  authors: [{ name: "Pollards" }],
   icons: { icon: "/favicon.ico" },
   openGraph: {
     type: "website",
     locale: "en_GB",
-    siteName: "Pollards Opticians",
+    siteName: "Pollards",
     images: ["/assets/images/onboarding-img.webp"],
   },
 };
@@ -68,7 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem
           disableTransitionOnChange
         >
-          <TooltipProvider>{children}</TooltipProvider>
+          {children}
           <Toaster richColors position="top-center" />
           <Analytics />
         </ThemeProvider>

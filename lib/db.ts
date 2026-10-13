@@ -35,7 +35,7 @@ export async function query<T extends QueryResultRow>(text: string, params: unkn
 }
 
 /** Postgres error code for a unique-constraint violation (e.g. a slot already taken). */
-export const UNIQUE_VIOLATION = "23505";
+const UNIQUE_VIOLATION = "23505";
 
 export const isUniqueViolation = (error: unknown) =>
   typeof error === "object" && error !== null && "code" in error && error.code === UNIQUE_VIOLATION;
