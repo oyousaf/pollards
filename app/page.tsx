@@ -1,4 +1,4 @@
-import { CalendarCheckIcon, Clock3Icon, MessageSquareTextIcon } from "lucide-react";
+import { CalendarCheckIcon, Clock3Icon, MailCheckIcon } from "lucide-react";
 import Link from "next/link";
 
 import { PatientForm } from "@/components/forms/patient-form";
@@ -7,7 +7,7 @@ import { PageIntro, PatientShell } from "@/components/patient-shell";
 const perks = [
   { icon: Clock3Icon, label: "Book in under a minute" },
   { icon: CalendarCheckIcon, label: "Choose your optometrist" },
-  { icon: MessageSquareTextIcon, label: "SMS confirmation" },
+  { icon: MailCheckIcon, label: "Email confirmation" },
 ];
 
 export default function Home() {

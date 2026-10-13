@@ -33,7 +33,6 @@ export const PatientSchema = z.object({
     .max(new Date(), "Date of birth can't be in the future"),
   gender: z.enum(GenderOptions, { error: "Please choose one" }),
   address: z.string().trim().min(5, "Please enter your full address").max(500),
-  // Kept required: these map to required columns in the existing Appwrite table.
   occupation: z.string().trim().min(2, "Please enter your occupation").max(100),
   emergencyContactName: name,
   emergencyContactNumber: phone,

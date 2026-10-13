@@ -1,12 +1,23 @@
-import {
-  ADMIN_PASSKEY,
-  CLINICIAN,
-  expect,
-  londonSlot,
-  mock,
-  nextMonthTuesday,
-  test,
-} from "./fixtures";
+import type { Page } from "@playwright/test";
+
+import { ADMIN_PASSKEY, db, expect, londonSlot, nextMonthTuesday, outbox, test } from "./fixtures";
+
+async function signIn(page: Page) {
+  await page.goto("/admin/login");
+  await page.getByLabel("Passkey").fill(ADMIN_PASSKEY);
+  await expect(page).toHaveURL("/admin");
+}
+
+async function seedPending() {
+  const patient = await db.seedPatient({ name: "Pat Pending", email: "pat@example.com" });
+  const schedule = londonSlot(nextMonthTuesday(), 14);
+  const id = await db.seedAppointment({
+    patientId: patient.id,
+    schedule,
+    reason: "Contact lens fitting",
+  });
+  return { id, schedule };
+}
 
 test.describe("admin", () => {
   test("dashboard is protected by the 4-digit passcode", async ({ page }) => {
@@ -22,31 +33,9 @@ test.describe("admin", () => {
     await expect(page.getByRole("heading", { level: 1, name: "Appointments" })).toBeVisible();
   });
 
-  test("confirms a pending appointment and texts the patient", async ({ page }) => {
-    const schedule = londonSlot(nextMonthTuesday(), 14).toISOString();
-    await mock.seed({
-      users: [
-        { $id: "user_pat", email: "pat@example.com", name: "Pat Pending", phone: "+447700900333" },
-      ],
-      rows: {
-        patients: [{ $id: "patient_pat", userId: "user_pat", name: "Pat Pending" }],
-        appointments: [
-          {
-            $id: "appt_1",
-            userId: "user_pat",
-            patient: "patient_pat",
-            primaryPhysician: CLINICIAN,
-            schedule,
-            status: "pending",
-            reason: "Contact lens fitting",
-          },
-        ],
-      },
-    });
-
-    await page.goto("/admin/login");
-    await page.getByLabel("Passkey").fill(ADMIN_PASSKEY);
-    await expect(page).toHaveURL("/admin");
+  test("confirms a pending appointment and notifies the patient", async ({ page }) => {
+    const { id, schedule } = await seedPending();
+    await signIn(page);
 
     const row = page.getByRole("row", { name: /Pat Pending/ });
     await expect(row).toContainText("Pending");
@@ -56,18 +45,52 @@ test.describe("admin", () => {
     await expect(page.getByText("Appointment confirmed")).toBeVisible();
     await expect(row).toContainText("Scheduled");
 
-    const state = await mock.state();
-    expect(state.rows.appointments[0]).toMatchObject({ status: "scheduled", schedule });
-    expect(state.sms).toHaveLength(1);
-    expect(state.sms[0].users).toEqual(["user_pat"]);
-    expect(state.sms[0].content).toContain("confirmed");
+    const { rows } = await db.query<{ status: string; schedule: Date }>(
+      "SELECT status, schedule FROM appointments WHERE id = $1",
+      [id]
+    );
+    expect(rows[0].status).toBe("scheduled");
+    expect(rows[0].schedule.toISOString()).toBe(schedule.toISOString());
+
+    const sent = await outbox();
+    expect(sent).toContainEqual(
+      expect.objectContaining({
+        kind: "email",
+        to: "pat@example.com",
+        subject: expect.stringContaining("confirmed"),
+      })
+    );
+    expect(sent).toContainEqual(expect.objectContaining({ kind: "sms", to: "+447700900111" }));
+  });
+
+  test("cancels with a reason and frees the slot", async ({ page }) => {
+    const { id } = await seedPending();
+    await signIn(page);
+
+    const row = page.getByRole("row", { name: /Pat Pending/ });
+    await row.getByRole("button", { name: /Actions for Pat Pending/ }).click();
+    await page.getByRole("menuitem", { name: "Cancel" }).click();
+    await page.getByLabel("Reason").fill("Optometrist unavailable");
+    await page.getByRole("button", { name: "Cancel & notify" }).click();
+
+    await expect(page.getByText("Appointment cancelled")).toBeVisible();
+    await expect(row).toContainText("Cancelled");
+
+    const { rows } = await db.query(
+      "SELECT status, cancellation_reason FROM appointments WHERE id = $1",
+      [id]
+    );
+    expect(rows[0]).toMatchObject({
+      status: "cancelled",
+      cancellation_reason: "Optometrist unavailable",
+    });
+    const email = (await outbox()).find((m) => m.kind === "email");
+    expect(email).toMatchObject({ subject: expect.stringContaining("cancelled") });
+    expect(email && "text" in email && email.text).toContain("Optometrist unavailable");
   });
 
   test("signing out ends the session", async ({ page }) => {
-    await page.goto("/admin/login");
-    await page.getByLabel("Passkey").fill(ADMIN_PASSKEY);
-    await expect(page).toHaveURL("/admin");
-
+    await signIn(page);
     await page.getByRole("button", { name: "Sign out" }).click();
     await expect(page).toHaveURL("/");
     await page.goto("/admin");

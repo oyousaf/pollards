@@ -30,7 +30,7 @@ function icsHref(start: Date, physician: string) {
     `DTSTART:${stamp(start)}`,
     `DTEND:${stamp(end)}`,
     `SUMMARY:Eye appointment (awaiting confirmation) – Pollards Opticians`,
-    `DESCRIPTION:With ${physician}. We'll text you to confirm.`,
+    `DESCRIPTION:With ${physician}. We'll be in touch to confirm.`,
     "LOCATION:Pollards Opticians\, Wakefield",
     "END:VEVENT",
     "END:VCALENDAR",
@@ -64,7 +64,7 @@ export default async function SuccessPage({
           Request <em className="text-brand">received</em>
         </h1>
         <p className="mt-3 max-w-md animate-fade-up text-pretty text-muted-foreground [animation-delay:80ms]">
-          Thanks, we&apos;ll check availability and text you to confirm shortly.
+          Thanks, we&apos;ll check availability and email you to confirm shortly.
         </p>
       </div>
 

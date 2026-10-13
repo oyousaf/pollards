@@ -38,11 +38,11 @@ type DialogProps = {
 
 function reportResult(result: Awaited<ReturnType<typeof scheduleAppointment>>, success: string) {
   if (!result.ok) return (toast.error(result.error), false);
-  if (result.data.smsSent)
-    toast.success(success, { description: "The patient has been notified by SMS." });
+  if (result.data.notified)
+    toast.success(success, { description: "The patient has been notified." });
   else
     toast.warning(success, {
-      description: "SMS notification couldn't be sent — please call the patient.",
+      description: "We couldn't email the patient — please call them.",
     });
   return true;
 }
@@ -143,7 +143,7 @@ export function CancelDialog({ appointment, open, onOpenChange }: DialogProps) {
           <DialogTitle>Cancel appointment</DialogTitle>
           <DialogDescription>
             {appointment.patientName} · {formatDateTime(appointment.schedule).dateTime}. The patient
-            will receive an SMS with your reason.
+            will be notified with your reason.
           </DialogDescription>
         </DialogHeader>
         <form id="cancel-form" onSubmit={onSubmit} noValidate>

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s · Pollards Opticians",
   },
   description:
-    "Book an eye examination, contact lens fitting or keratoconus review with Pollards Opticians in Wakefield. Quick online booking with SMS confirmation.",
+    "Book an eye examination, contact lens fitting or keratoconus review with Pollards Opticians in Wakefield. Quick online booking with email confirmation.",
   keywords: [
     "Pollards Opticians",
     "Opticians Wakefield",

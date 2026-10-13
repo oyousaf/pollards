@@ -75,7 +75,7 @@ function DetailsStep({ onSent }: { onSent: (maskedEmail: string) => void }) {
           name="phone"
           label="Mobile number"
           placeholder="07700 900123"
-          description="We'll text you when your appointment is confirmed."
+          description="We'll only use this about your appointments."
         />
         <Button type="submit" size="lg" disabled={pending} className="h-12 rounded-xl text-base">
           {pending && <Spinner />}

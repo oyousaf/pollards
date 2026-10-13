@@ -22,9 +22,9 @@ export default async function NewAppointmentPage({
       <PageIntro
         eyebrow="Book an appointment"
         title={<>Hi {patient.name.split(" ")[0]}, when suits you?</>}
-        description="Pick your optometrist and a time. We'll text you as soon as it's confirmed."
+        description="Pick your optometrist and a time. We'll let you know as soon as it's confirmed."
       />
-      <AppointmentForm defaultPhysician={patient.primaryPhysician} booked={booked} />
+      <AppointmentForm defaultPhysician={patient.primaryPhysician ?? undefined} booked={booked} />
     </PatientShell>
   );
 }

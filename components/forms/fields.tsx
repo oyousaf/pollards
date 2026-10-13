@@ -90,6 +90,7 @@ export function TextField<T extends FieldValues>({
   type = "text",
   autoComplete,
   inputMode,
+  readOnly,
   ...props
 }: BaseProps<T> & {
   icon?: React.ReactNode;
@@ -97,6 +98,7 @@ export function TextField<T extends FieldValues>({
   type?: React.HTMLInputTypeAttribute;
   autoComplete?: string;
   inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
+  readOnly?: boolean;
 }) {
   return (
     <FormField {...props}>
@@ -112,6 +114,7 @@ export function TextField<T extends FieldValues>({
               placeholder={placeholder}
               autoComplete={autoComplete}
               inputMode={inputMode}
+              readOnly={readOnly}
               aria-invalid={invalid}
             />
           </InputGroup>
@@ -124,6 +127,7 @@ export function TextField<T extends FieldValues>({
             placeholder={placeholder}
             autoComplete={autoComplete}
             inputMode={inputMode}
+            readOnly={readOnly}
             aria-invalid={invalid}
             className={control}
           />

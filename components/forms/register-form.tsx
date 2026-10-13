@@ -168,6 +168,8 @@ export function RegisterForm({ user }: { user: PublicUser }) {
                   type="email"
                   autoComplete="email"
                   icon={<MailIcon />}
+                  readOnly
+                  description="Verified with your sign-in code."
                 />
                 <PhoneField control={form.control} name="phone" label="Mobile number" />
               </div>

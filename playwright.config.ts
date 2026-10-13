@@ -1,25 +1,31 @@
+import { resolve } from "node:path";
+
 import { defineConfig, devices } from "@playwright/test";
 
 const PORT = 3100;
-const MOCK_PORT = 4010;
+const DB_PORT = 5499;
+const DB_READY_PORT = 5498;
 
-/** Env for the app under test: points Appwrite at the in-memory mock. */
+/** Outgoing email/SMS are written here as JSON instead of being sent. */
+export const OUTBOX_DIR = resolve("test-results/outbox");
+export const TEST_DATABASE_URL = `postgresql://postgres:postgres@127.0.0.1:${DB_PORT}/postgres`;
+
+/** Env for the app under test: in-memory Postgres, file outbox, throwaway uploads. */
 export const testEnv = {
-  APPWRITE_ENDPOINT: `http://127.0.0.1:${MOCK_PORT}/v1`,
-  APPWRITE_PROJECT_ID: "test",
-  APPWRITE_API_KEY: "test",
-  APPWRITE_DATABASE_ID: "db",
-  APPWRITE_PATIENT_TABLE_ID: "patients",
-  APPWRITE_APPOINTMENT_TABLE_ID: "appointments",
-  APPWRITE_BUCKET_ID: "bucket",
+  DATABASE_URL: TEST_DATABASE_URL,
+  DATABASE_SSL: "false",
+  DATABASE_POOL_MAX: "5",
   ADMIN_PASSKEY: "2468",
   SESSION_SECRET: "e2e-session-secret-e2e-session-secret-0000",
+  MAIL_OUTBOX_DIR: OUTBOX_DIR,
+  UPLOAD_DIR: resolve("test-results/uploads"),
+  RESEND_API_KEY: "",
   NEXT_PUBLIC_GA_ID: "",
 };
 
 export default defineConfig({
   testDir: "tests/e2e",
-  fullyParallel: false, // tests share one mock backend
+  fullyParallel: false, // tests share one database
   workers: 1,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [["github"], ["html", { open: "never" }]] : "list",
@@ -35,9 +41,9 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command: "node tests/e2e/mock-appwrite.mjs",
-      url: `http://127.0.0.1:${MOCK_PORT}/__state`,
-      env: { MOCK_APPWRITE_PORT: String(MOCK_PORT) },
+      command: "node tests/e2e/test-db.mjs",
+      url: `http://127.0.0.1:${DB_READY_PORT}`,
+      env: { TEST_DB_PORT: String(DB_PORT), TEST_DB_READY_PORT: String(DB_READY_PORT) },
       reuseExistingServer: !process.env.CI,
     },
     {

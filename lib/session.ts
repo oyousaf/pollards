@@ -62,14 +62,14 @@ export async function requirePatient(userId: string) {
 
 // ---------- Email OTP challenge ----------
 
-const OTP_TTL_SECONDS = 15 * 60; // matches Appwrite's email token lifetime
+const OTP_TTL_SECONDS = 15 * 60; // matches the login code lifetime
 
-export type OtpChallenge = { userId: string; email: string; name: string; phone: string };
+export type OtpChallenge = { email: string; name: string; phone: string };
 
-/** Remembers who we sent a code to, so the verify step can't be pointed at another user. */
+/** Remembers who we sent a code to, so the verify step can't be pointed at another email. */
 export async function createOtpChallenge(challenge: OtpChallenge) {
   const token = await signToken(
-    { sub: challenge.userId, email: challenge.email, name: challenge.name, phone: challenge.phone },
+    { sub: challenge.email, name: challenge.name, phone: challenge.phone },
     env().SESSION_SECRET,
     OTP_TTL_SECONDS
   );
@@ -80,7 +80,7 @@ export async function getOtpChallenge(): Promise<OtpChallenge | null> {
   const token = (await cookies()).get(OTP_COOKIE)?.value;
   const p = await verifyToken(token, env().SESSION_SECRET);
   if (!p || typeof p.sub !== "string") return null;
-  return { userId: p.sub, email: String(p.email), name: String(p.name), phone: String(p.phone) };
+  return { email: p.sub, name: String(p.name), phone: String(p.phone) };
 }
 
 export async function clearOtpChallenge() {

@@ -1,145 +1,107 @@
 import "server-only";
 
-import { Query } from "node-appwrite";
 import { cache } from "react";
 
-import { BOOKING_WINDOW_DAYS, SLOT_MINUTES, STATUSES } from "@/constants";
-import type { AppointmentDTO, AppointmentRow, PatientRow, PublicUser, Status } from "@/types";
+import { BOOKING_WINDOW_DAYS, STATUSES } from "@/constants";
+import type { AppointmentDTO, PublicUser, RegisteredPatient, Status } from "@/types";
 
 import type { BookedSlot } from "./availability";
-import { appwrite } from "./appwrite";
-import { env } from "./env";
+import { query } from "./db";
 import { requireAdmin } from "./session";
 
 // Data access layer: every read goes through here so authorisation and
 // data minimisation (only send the client what it renders) live in one place.
 
-export const getUser = cache(async (userId: string): Promise<PublicUser | null> => {
-  try {
-    const user = await appwrite().users.get({ userId });
-    return { id: user.$id, name: user.name, email: user.email, phone: user.phone };
-  } catch {
-    return null;
-  }
-});
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+export const isUuid = (value: unknown): value is string =>
+  typeof value === "string" && UUID.test(value);
 
-export const findPatient = cache(async (userId: string) => {
-  const { APPWRITE_DATABASE_ID, APPWRITE_PATIENT_TABLE_ID } = env();
-  const { rows } = await appwrite().tables.listRows<PatientRow>({
-    databaseId: APPWRITE_DATABASE_ID,
-    tableId: APPWRITE_PATIENT_TABLE_ID,
-    queries: [Query.equal("userId", [userId]), Query.limit(1)],
-  });
+export const getUser = cache(async (id: string): Promise<PublicUser | null> => {
+  if (!isUuid(id)) return null;
+  const { rows } = await query<PublicUser>(
+    "SELECT id, name, email, phone FROM patients WHERE id = $1",
+    [id]
+  );
   return rows[0] ?? null;
 });
 
-function toDTO(row: AppointmentRow): AppointmentDTO {
-  return {
-    id: row.$id,
-    createdAt: row.$createdAt,
-    schedule: row.schedule,
-    status: row.status,
-    primaryPhysician: row.primaryPhysician,
-    reason: row.reason,
-    note: row.note ?? null,
-    cancellationReason: row.cancellationReason ?? null,
-    patientName:
-      typeof row.patient === "object" && row.patient ? row.patient.name : "Unknown patient",
-  };
-}
+/** The patient record, but only once registration has been completed. */
+export const findPatient = cache(async (id: string): Promise<RegisteredPatient | null> => {
+  if (!isUuid(id)) return null;
+  const { rows } = await query<RegisteredPatient>(
+    `SELECT id, name, primary_physician AS "primaryPhysician"
+     FROM patients WHERE id = $1 AND registered_at IS NOT NULL`,
+    [id]
+  );
+  return rows[0] ?? null;
+});
+
+const APPOINTMENT_COLUMNS = `
+  a.id,
+  a.created_at AS "createdAt",
+  a.schedule,
+  a.status,
+  a.primary_physician AS "primaryPhysician",
+  a.reason,
+  a.note,
+  a.cancellation_reason AS "cancellationReason",
+  p.name AS "patientName"`;
+
+type AppointmentRow = Omit<AppointmentDTO, "createdAt" | "schedule"> & {
+  createdAt: Date;
+  schedule: Date;
+};
+
+// pg returns timestamptz as Date; client components need plain strings.
+const toDTO = (row: AppointmentRow): AppointmentDTO => ({
+  ...row,
+  createdAt: row.createdAt.toISOString(),
+  schedule: row.schedule.toISOString(),
+});
 
 /** Appointment for the confirmation page — only if it belongs to the signed-in patient. */
-export async function getPatientAppointment(appointmentId: string, userId: string) {
-  const { APPWRITE_DATABASE_ID, APPWRITE_APPOINTMENT_TABLE_ID } = env();
-  try {
-    const row = await appwrite().tables.getRow<AppointmentRow>({
-      databaseId: APPWRITE_DATABASE_ID,
-      tableId: APPWRITE_APPOINTMENT_TABLE_ID,
-      rowId: appointmentId,
-    });
-    return row.userId === userId ? toDTO(row) : null;
-  } catch {
-    return null;
-  }
+export async function getPatientAppointment(appointmentId: string, patientId: string) {
+  if (!isUuid(appointmentId) || !isUuid(patientId)) return null;
+  const { rows } = await query<AppointmentRow>(
+    `SELECT ${APPOINTMENT_COLUMNS}
+     FROM appointments a JOIN patients p ON p.id = a.patient_id
+     WHERE a.id = $1 AND a.patient_id = $2`,
+    [appointmentId, patientId]
+  );
+  return rows[0] ? toDTO(rows[0]) : null;
 }
 
 export async function getAppointmentStats() {
   await requireAdmin();
-  const { APPWRITE_DATABASE_ID, APPWRITE_APPOINTMENT_TABLE_ID } = env();
-  const { tables } = appwrite();
-
-  // `total` reflects the full count server-side, not just the first page.
-  const count = (status?: Status) =>
-    tables
-      .listRows({
-        databaseId: APPWRITE_DATABASE_ID,
-        tableId: APPWRITE_APPOINTMENT_TABLE_ID,
-        queries: [...(status ? [Query.equal("status", [status])] : []), Query.limit(1)],
-      })
-      .then((r) => r.total);
-
-  const [total, ...byStatus] = await Promise.all([undefined, ...STATUSES].map(count));
-  return {
-    total,
-    ...(Object.fromEntries(STATUSES.map((s, i) => [s, byStatus[i]])) as Record<Status, number>),
-  };
+  const { rows } = await query<{ status: Status; count: string }>(
+    "SELECT status, count(*) FROM appointments GROUP BY status"
+  );
+  const byStatus = Object.fromEntries(STATUSES.map((s) => [s, 0])) as Record<Status, number>;
+  for (const r of rows) byStatus[r.status] = Number(r.count);
+  return { total: Object.values(byStatus).reduce((a, b) => a + b, 0), ...byStatus };
 }
 
 export async function listRecentAppointments(limit = 250) {
   await requireAdmin();
-  const { APPWRITE_DATABASE_ID, APPWRITE_APPOINTMENT_TABLE_ID } = env();
-  const { rows } = await appwrite().tables.listRows<AppointmentRow>({
-    databaseId: APPWRITE_DATABASE_ID,
-    tableId: APPWRITE_APPOINTMENT_TABLE_ID,
-    queries: [Query.select(["*", "patient.*"]), Query.orderDesc("$createdAt"), Query.limit(limit)],
-  });
+  const { rows } = await query<AppointmentRow>(
+    `SELECT ${APPOINTMENT_COLUMNS}
+     FROM appointments a JOIN patients p ON p.id = a.patient_id
+     ORDER BY a.created_at DESC LIMIT $1`,
+    [limit]
+  );
   return rows.map(toDTO);
 }
-
-const ACTIVE_STATUSES: Status[] = ["pending", "scheduled"];
 
 /**
  * Future slots held by pending or scheduled appointments, so pickers can grey them out.
  * Only times and clinician names are returned — no patient data.
  */
 export async function getBookedSlots(): Promise<BookedSlot[]> {
-  const { APPWRITE_DATABASE_ID, APPWRITE_APPOINTMENT_TABLE_ID } = env();
-  const now = new Date();
-  const end = new Date(now.getTime() + (BOOKING_WINDOW_DAYS + 1) * 864e5);
-  try {
-    const { rows } = await appwrite().tables.listRows<AppointmentRow>({
-      databaseId: APPWRITE_DATABASE_ID,
-      tableId: APPWRITE_APPOINTMENT_TABLE_ID,
-      queries: [
-        Query.select(["$id", "schedule", "primaryPhysician"]),
-        Query.equal("status", ACTIVE_STATUSES),
-        Query.between("schedule", now.toISOString(), end.toISOString()),
-        Query.limit(5000),
-      ],
-    });
-    return rows.map((r) => ({ id: r.$id, physician: r.primaryPhysician, schedule: r.schedule }));
-  } catch (error) {
-    // Degrade gracefully: nothing greyed out, but isSlotTaken() still rejects clashes on submit.
-    console.error("getBookedSlots failed", error);
-    return [];
-  }
-}
-
-/** Server-side double-booking guard (the client greying-out is only a convenience). */
-export async function isSlotTaken(physician: string, slot: Date, excludeId?: string) {
-  const { APPWRITE_DATABASE_ID, APPWRITE_APPOINTMENT_TABLE_ID } = env();
-  const end = new Date(slot.getTime() + SLOT_MINUTES * 60_000);
-  const { total } = await appwrite().tables.listRows({
-    databaseId: APPWRITE_DATABASE_ID,
-    tableId: APPWRITE_APPOINTMENT_TABLE_ID,
-    queries: [
-      Query.equal("primaryPhysician", [physician]),
-      Query.equal("status", ACTIVE_STATUSES),
-      Query.greaterThanEqual("schedule", slot.toISOString()),
-      Query.lessThan("schedule", end.toISOString()),
-      ...(excludeId ? [Query.notEqual("$id", excludeId)] : []),
-      Query.limit(1),
-    ],
-  });
-  return total > 0;
+  const { rows } = await query<{ id: string; physician: string; schedule: Date }>(
+    `SELECT id, primary_physician AS physician, schedule FROM appointments
+     WHERE status IN ('pending', 'scheduled')
+       AND schedule > now() AND schedule < now() + make_interval(days => $1)`,
+    [BOOKING_WINDOW_DAYS + 1]
+  );
+  return rows.map((r) => ({ ...r, schedule: r.schedule.toISOString() }));
 }
