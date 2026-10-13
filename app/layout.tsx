@@ -17,7 +17,7 @@ const instrument = Instrument_Serif({
   variable: "--font-instrument",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pollards.info";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pollards.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

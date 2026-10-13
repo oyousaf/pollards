@@ -14,14 +14,21 @@ const securityHeaders = [
   },
 ];
 
+const publicHost = process.env.NEXT_PUBLIC_SITE_URL
+  ? new URL(process.env.NEXT_PUBLIC_SITE_URL).host
+  : undefined;
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactCompiler: true,
   typedRoutes: true,
   experimental: {
     serverActions: {
-      // ID documents are capped at 5 MB in validation; leave headroom for multipart overhead.
-      bodySizeLimit: "6mb",
+      // ID documents are capped at 4 MB (Vercel proxies ~4.5 MB max); headroom for multipart overhead.
+      bodySizeLimit: "5mb",
+      // Forms are submitted from the public site (e.g. *.vercel.app) but handled on the VPS,
+      // whose own hostname differs — trust the public origin for server actions.
+      allowedOrigins: publicHost ? [publicHost] : [],
     },
   },
   images: {

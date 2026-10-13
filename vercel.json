@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "echo 'proxy-only deployment: nothing to install'",
+  "buildCommand": "echo 'proxy-only deployment: the app runs on the VPS'",
+  "outputDirectory": "public",
+  "rewrites": [{ "source": "/(.*)", "destination": "https://204-168-141-215.sslip.io/$1" }]
+}

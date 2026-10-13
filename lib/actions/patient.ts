@@ -163,7 +163,7 @@ export async function registerPatient(formData: FormData): Promise<ActionResult>
   const hasFile = file instanceof File && file.size > 0;
   if (hasFile) {
     if (file.size > MAX_ID_DOCUMENT_BYTES) {
-      return { ok: false, error: "ID document must be 5 MB or smaller." };
+      return { ok: false, error: "ID document must be 4 MB or smaller." };
     }
     if (!(file.type in ACCEPTED_ID_DOCUMENT_TYPES)) {
       return { ok: false, error: "ID document must be a JPG, PNG, WebP or PDF." };

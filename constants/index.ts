@@ -53,7 +53,7 @@ export const OpeningHours: ReadonlyArray<{ open: number; close: number } | null>
 export const SLOT_MINUTES = 30;
 export const BOOKING_WINDOW_DAYS = 90;
 
-export const MAX_ID_DOCUMENT_BYTES = 5 * 1024 * 1024;
+export const MAX_ID_DOCUMENT_BYTES = 4 * 1024 * 1024;
 export const ACCEPTED_ID_DOCUMENT_TYPES = {
   "image/jpeg": [".jpg", ".jpeg"],
   "image/png": [".png"],

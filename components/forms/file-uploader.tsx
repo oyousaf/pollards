@@ -38,7 +38,7 @@ export function FileUploader({
     onDropRejected: (rejections: FileRejection[]) =>
       toast.error(
         rejections[0]?.errors[0]?.code === "file-too-large"
-          ? "That file is over 5 MB."
+          ? "That file is over 4 MB."
           : "Please upload a JPG, PNG, WebP or PDF."
       ),
   });
@@ -89,7 +89,7 @@ export function FileUploader({
         <p>
           <span className="font-medium text-brand">Click to upload</span> or drag and drop
         </p>
-        <p className="text-muted-foreground">JPG, PNG, WebP or PDF · up to 5 MB</p>
+        <p className="text-muted-foreground">JPG, PNG, WebP or PDF · up to 4 MB</p>
       </div>
     </div>
   );

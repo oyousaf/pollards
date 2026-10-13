@@ -19,7 +19,7 @@ const schema = z
 
     // Email (sign-in codes + appointment updates). Resend in production.
     RESEND_API_KEY: optional,
-    EMAIL_FROM: z.string().default("Pollards Opticians <bookings@pollards.info>"),
+    EMAIL_FROM: z.string().default("Pollards Opticians <pollards@legxcysol.dev>"),
     // Dev/test only: write outgoing email/SMS as JSON files here instead of sending.
     MAIL_OUTBOX_DIR: optional,
 

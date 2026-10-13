@@ -25,7 +25,7 @@ function icsHref(start: Date, physician: string) {
     "VERSION:2.0",
     "PRODID:-//Pollards Opticians//Booking//EN",
     "BEGIN:VEVENT",
-    `UID:${stamp(start)}-${physician.replace(/\W/g, "")}@pollards.info`,
+    `UID:${stamp(start)}-${physician.replace(/\W/g, "")}@pollards.vercel.app`,
     `DTSTAMP:${stamp(new Date())}`,
     `DTSTART:${stamp(start)}`,
     `DTEND:${stamp(end)}`,
