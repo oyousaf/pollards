@@ -140,6 +140,10 @@ function CodeStep({ email, onBack }: { email: string; onBack: () => void }) {
             We sent a 6-digit code to <span className="font-medium text-foreground">{email}</span>.
             It expires in 15 minutes.
           </p>
+          <p className="mt-2 text-muted-foreground">
+            <span className="font-medium text-foreground">Can&apos;t see it?</span> Check your junk
+            or spam folder — it sometimes lands there.
+          </p>
         </div>
       </div>
 

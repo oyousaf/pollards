@@ -27,6 +27,7 @@ test.describe("patient sign-in with email code", () => {
   test("rejects a wrong code, then signs a new patient in to registration", async ({ page }) => {
     await requestCode(page, { name: "Nina New", email: "nina.new@example.com" });
     await expect(page.getByText("ni•••@example.com")).toBeVisible();
+    await expect(page.getByText(/junk or spam folder/)).toBeVisible();
 
     const code = await latestCode("nina.new@example.com");
     await page.getByLabel("Verification code").fill(code === "000000" ? "111111" : "000000");
